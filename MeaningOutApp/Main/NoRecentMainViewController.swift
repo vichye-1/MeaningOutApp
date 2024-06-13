@@ -24,18 +24,26 @@ final class NoRecentMainViewController: UIViewController {
         return imageView
     }()
     
+    private let emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constant.OtherStrings.noRecent.rawValue
+        label.font = .boldSystemFont(ofSize: 15)
+        label.textColor = Constant.FontColors.black
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureHierarchy()
         configureLayout()
         configureUI()
-        
     }
     
     private func configureHierarchy() {
         view.addSubview(shoppingSearchBar)
         view.addSubview(noRecentImageView)
+        view.addSubview(emptyLabel)
     }
     
     private func configureLayout() {
@@ -48,6 +56,12 @@ final class NoRecentMainViewController: UIViewController {
             make.centerX.centerY.equalTo(view.safeAreaLayoutGuide)
             make.width.equalTo(view.safeAreaLayoutGuide.snp.width).multipliedBy(0.8)
             make.height.equalTo(noRecentImageView.snp.height)
+        }
+        
+        emptyLabel.snp.makeConstraints { make in
+            make.top.equalTo(noRecentImageView.snp.bottom).offset(4)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(34)
         }
     }
     
