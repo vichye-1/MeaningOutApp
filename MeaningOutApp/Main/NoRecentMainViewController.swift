@@ -84,7 +84,8 @@ final class NoRecentMainViewController: UIViewController {
             "X-Naver-Client-Id": ShoppingKeys.id,
             "X-Naver-Client-Secret": ShoppingKeys.secret
         ]
-        AF.request(url, method: .get, parameters: parameter, headers: header).responseString { response in  // request하면 response해야함
+        
+        AF.request(url, method: .get, parameters: parameter, headers: header).responseDecodable(of: ShoppingResult.self) { response in
             switch response.result {
             case .success(let value):
                 print(value)
