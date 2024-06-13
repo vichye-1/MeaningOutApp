@@ -6,14 +6,31 @@
 //
 
 import UIKit
+import Alamofire
+import SnapKit
 
-class NoRecentMainViewController: UIViewController {
+final class NoRecentMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureHierarchy()
+        configureLayout()
+        configureUI()
+        
+    }
+    
+    private func configureHierarchy() {
+        
+    }
+    
+    private func configureLayout() {
+        
+    }
+    
+    private func configureUI() {
         view.backgroundColor = .white
         self.navigationItem.title = "승혜님의 MEANING OUT"
-        
     }
     
 
