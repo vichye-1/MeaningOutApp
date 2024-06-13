@@ -36,4 +36,8 @@ enum Constant {
         case setting = "SETTING"
         case editProfile = "EDIT PROFILE"
     }
+    
+    enum SearchBarPlaceHolder: String {
+        case mainPlaceHolder = "브랜드, 상품 등을 입력하세요."
+    }
 }
