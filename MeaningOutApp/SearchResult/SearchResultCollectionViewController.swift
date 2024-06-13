@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import Alamofire
+import SnapKit
 
-class SearchResultViewController: UIViewController {
+class SearchResultCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
-
+    
 
 }

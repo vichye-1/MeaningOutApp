@@ -10,6 +10,9 @@ import Alamofire
 import SnapKit
 
 final class NoRecentMainViewController: UIViewController {
+    
+    var page = 1
+    var currentQuery: String?
 
     private let shoppingSearchBar: UISearchBar = {
        let searchBar = UISearchBar()
@@ -34,10 +37,12 @@ final class NoRecentMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureHierarchy()
         configureLayout()
         configureUI()
+        callRequestShopping(query: "기계식 키보드")
+        
+        shoppingSearchBar.delegate = self
     }
     
     private func configureHierarchy() {
@@ -70,5 +75,31 @@ final class NoRecentMainViewController: UIViewController {
         self.navigationItem.title = "승혜님의 MEANING OUT"
     }
     
+    func callRequestShopping(query: String) {
+        let url = ShoppingURL.shoppingURL
+        let parameter: Parameters = [
+            "query" : query
+        ]
+        let header: HTTPHeaders = [
+            "X-Naver-Client-Id": ShoppingKeys.id,
+            "X-Naver-Client-Secret": ShoppingKeys.secret
+        ]
+        AF.request(url, method: .get, parameters: parameter, headers: header).responseString { response in  // request하면 response해야함
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
 
+extension NoRecentMainViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        page = 1
+        guard let keyword = shoppingSearchBar.text, !keyword.isEmpty else { return }
+        currentQuery = keyword
+        callRequestShopping(query: keyword)
+    }
 }
