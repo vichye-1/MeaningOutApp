@@ -13,6 +13,7 @@ final class NoRecentMainViewController: UIViewController {
     
     var page = 1
     var currentQuery: String?
+    var shoppingList = ShoppingResult(total: 0, start: 0, display: 0, items: [])
 
     private let shoppingSearchBar: UISearchBar = {
        let searchBar = UISearchBar()
@@ -40,7 +41,6 @@ final class NoRecentMainViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
-        callRequestShopping(query: "기계식 키보드")
         
         shoppingSearchBar.delegate = self
     }
@@ -78,26 +78,37 @@ final class NoRecentMainViewController: UIViewController {
     func callRequestShopping(query: String) {
         let url = ShoppingURL.shoppingURL
         let parameter: Parameters = [
-            "query" : query
+            APIParameterAndHeaders.param : query
         ]
         let header: HTTPHeaders = [
-            "X-Naver-Client-Id": ShoppingKeys.id,
-            "X-Naver-Client-Secret": ShoppingKeys.secret
+            APIParameterAndHeaders.naverId: ShoppingKeys.id,
+            APIParameterAndHeaders.naverSecret: ShoppingKeys.secret
         ]
         
         AF.request(url, method: .get, parameters: parameter, headers: header).responseDecodable(of: ShoppingResult.self) { response in
             switch response.result {
             case .success(let value):
-                print(value)
+                if self.page == 1{
+                    self.shoppingList = value
+                } else {
+                    self.shoppingList.items.append(contentsOf: value.items)
+                }
+                self.showSearchResults()
             case .failure(let error):
                 print(error)
             }
         }
     }
+    
+    func showSearchResults() {
+        let searchResultVC = SearchResultCollectionViewController()
+        searchResultVC.shoppingList = self.shoppingList
+        self.navigationController?.pushViewController(searchResultVC, animated: true)
+    }
 }
 
 extension NoRecentMainViewController: UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         page = 1
         guard let keyword = shoppingSearchBar.text, !keyword.isEmpty else { return }
         currentQuery = keyword

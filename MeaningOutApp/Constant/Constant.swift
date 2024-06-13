@@ -17,6 +17,13 @@ enum Constant {
         static let white = UIColor(hexCode: "ffffff")
     }
     
+    enum FontStyles {
+        static let regular13 = UIFont.systemFont(ofSize: 13)
+        static let regular15 = UIFont.systemFont(ofSize: 15)
+        static let bold13 = UIFont.systemFont(ofSize: 13, weight: .bold)
+        static let bold15 = UIFont.systemFont(ofSize: 15, weight: .bold)
+    }
+    
     enum ButtonImages {
         static let serachButton = UIImage(systemName: "magnifyingglass")
         static let personButton = UIImage(systemName: "person")
@@ -57,6 +64,14 @@ enum Constant {
     
     enum SearchBarPlaceHolder: String {
         case mainPlaceHolder = "브랜드, 상품 등을 입력하세요."
+    }
+    
+    enum SearchResultStrings: String {
+        case result = "개의 검색 결과"
+        case sortAccuracy = "정확도"
+        case sortDate = "날짜순"
+        case expensive = "가격높은순"
+        case cheap = "가격낮은순"
     }
     
     enum NicknameStrings: String {
