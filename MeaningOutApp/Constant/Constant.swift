@@ -17,12 +17,23 @@ enum Constant {
         static let white = UIColor(hexCode: "ffffff")
     }
     
-    enum buttonImages {
+    enum ButtonImages {
         static let serachButton = UIImage(systemName: "magnifyingglass")
         static let personButton = UIImage(systemName: "person")
         static let nextButton = UIImage(systemName: "chevron.right")
         static let clockButton = UIImage(systemName: "clock")
         static let closeButton = UIImage(systemName: "xmark")
         static let cameraButton = UIImage(systemName: "camera.fill")
+    }
+    
+    enum TabBarItemStrings: String {
+        case search = "검색"
+        case settings = "설정"
+    }
+    
+    enum TabBarTitles: String {
+        case profileSetting = "PROFILE SETTIING"
+        case setting = "SETTING"
+        case editProfile = "EDIT PROFILE"
     }
 }
