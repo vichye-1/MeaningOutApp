@@ -17,9 +17,26 @@ class SearchResultCollectionViewController: UIViewController {
     
     private let searchCountLabel: UILabel = {
        let label = UILabel()
-        label.textColor = Constant.FontColors.mainOrange
-        label.font = Constant.FontStyles.bold13
+        label.textColor = Constant.Colors.mainOrange
+        label.font = Constant.FontSize.bold13
         return label
+    }()
+    
+    private let accuracyButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Constant.SearchResultStrings.sortAccuracy.rawValue, for: .normal)
+        button.titleLabel?.font = Constant.FontSize.regular13
+        button.setTitleColor(Constant.Colors.darkGray, for: .normal)
+        button.setTitleColor(Constant.Colors.white, for: .highlighted)
+        
+        button.setBackgroundColor(Constant.Colors.white, for: .normal)
+        button.setBackgroundColor(Constant.Colors.darkGray, for: .highlighted)
+        
+        button.layer.borderWidth = 1
+        button.layer.borderColor = Constant.Colors.lightGray.cgColor
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        return button
     }()
     
     override func viewDidLoad() {
@@ -32,6 +49,7 @@ class SearchResultCollectionViewController: UIViewController {
     
     private func configureHierarchy() {
         view.addSubview(searchCountLabel)
+        view.addSubview(accuracyButton)
     }
     
     private func configureLayout() {
@@ -40,6 +58,12 @@ class SearchResultCollectionViewController: UIViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(20)
         }
+        
+        accuracyButton.snp.makeConstraints { make in
+            make.top.equalTo(searchCountLabel.snp.bottom).offset(8)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.height.equalTo(34)
+        }
     }
     
     private func configureCollectionView() {
@@ -47,7 +71,7 @@ class SearchResultCollectionViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = Constant.FontColors.white
+        view.backgroundColor = Constant.Colors.white
         if let query = searchQuery {
             self.navigationItem.title = query
         }

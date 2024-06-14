@@ -34,7 +34,7 @@ final class NoRecentMainViewController: UIViewController {
         let label = UILabel()
         label.text = Constant.OtherStrings.noRecent.rawValue
         label.font = .boldSystemFont(ofSize: 15)
-        label.textColor = Constant.FontColors.black
+        label.textColor = Constant.Colors.black
         return label
     }()
     
@@ -77,7 +77,7 @@ final class NoRecentMainViewController: UIViewController {
         self.navigationItem.title = "승혜님의 MEANING OUT"
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        backBarButtonItem.tintColor = Constant.FontColors.black
+        backBarButtonItem.tintColor = Constant.Colors.black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     

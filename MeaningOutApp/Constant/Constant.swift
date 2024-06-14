@@ -8,7 +8,7 @@
 import UIKit
 
 enum Constant {
-    enum FontColors {
+    enum Colors {
         static let mainOrange = UIColor(hexCode: "ef8947")
         static let black = UIColor(hexCode: "000000")
         static let gray = UIColor(hexCode: "828282")
@@ -17,7 +17,7 @@ enum Constant {
         static let white = UIColor(hexCode: "ffffff")
     }
     
-    enum FontStyles {
+    enum FontSize {
         static let regular13 = UIFont.systemFont(ofSize: 13)
         static let regular15 = UIFont.systemFont(ofSize: 15)
         static let bold13 = UIFont.systemFont(ofSize: 13, weight: .bold)
