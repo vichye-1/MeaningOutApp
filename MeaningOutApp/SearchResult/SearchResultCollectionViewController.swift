@@ -13,10 +13,10 @@ class SearchResultCollectionViewController: UIViewController {
 
     var shoppingList: ShoppingResult?
     var searchQuery: String?
+    var currentTotal: Int = 0
     
     private let searchCountLabel: UILabel = {
        let label = UILabel()
-        label.text = Constant.SearchResultStrings.result.rawValue
         label.textColor = Constant.FontColors.mainOrange
         label.font = Constant.FontStyles.bold13
         return label
@@ -36,7 +36,7 @@ class SearchResultCollectionViewController: UIViewController {
     
     private func configureLayout() {
         searchCountLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(8)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(20)
         }
@@ -51,6 +51,7 @@ class SearchResultCollectionViewController: UIViewController {
         if let query = searchQuery {
             self.navigationItem.title = query
         }
+        searchCountLabel.text = "\(currentTotal.formatted())\(Constant.SearchResultStrings.result.rawValue)"
     }
     
 

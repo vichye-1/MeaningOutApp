@@ -13,6 +13,8 @@ final class NoRecentMainViewController: UIViewController {
     
     var page = 1
     var currentQuery: String?
+    var totalItems: Int = 0
+    
     var shoppingList = ShoppingResult(total: 0, start: 0, display: 0, items: [])
 
     private let shoppingSearchBar: UISearchBar = {
@@ -94,6 +96,7 @@ final class NoRecentMainViewController: UIViewController {
             case .success(let value):
                 if self.page == 1{
                     self.shoppingList = value
+                    self.totalItems = value.total
                 } else {
                     self.shoppingList.items.append(contentsOf: value.items)
                 }
@@ -108,6 +111,7 @@ final class NoRecentMainViewController: UIViewController {
         let searchResultVC = SearchResultCollectionViewController()
         searchResultVC.shoppingList = self.shoppingList
         searchResultVC.searchQuery = currentQuery
+        searchResultVC.currentTotal = totalItems
         self.navigationController?.pushViewController(searchResultVC, animated: true)
     }
 }
