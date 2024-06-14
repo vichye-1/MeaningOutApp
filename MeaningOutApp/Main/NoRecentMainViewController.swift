@@ -73,6 +73,10 @@ final class NoRecentMainViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .white
         self.navigationItem.title = "승혜님의 MEANING OUT"
+        
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = Constant.FontColors.black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     func callRequestShopping(query: String) {

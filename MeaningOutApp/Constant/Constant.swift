@@ -28,7 +28,6 @@ enum Constant {
         static let serachButton = UIImage(systemName: "magnifyingglass")
         static let personButton = UIImage(systemName: "person")
         static let nextButton = UIImage(systemName: "chevron.right")
-        static let backButton = UIImage(systemName: "chevron.left")
         static let clockButton = UIImage(systemName: "clock")
         static let closeButton = UIImage(systemName: "xmark")
         static let cameraButton = UIImage(systemName: "camera.fill")
