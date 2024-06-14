@@ -22,22 +22,7 @@ class SearchResultCollectionViewController: UIViewController {
         return label
     }()
     
-    private let accuracyButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(Constant.SearchResultStrings.sortAccuracy.rawValue, for: .normal)
-        button.titleLabel?.font = Constant.FontSize.regular13
-        button.setTitleColor(Constant.Colors.darkGray, for: .normal)
-        button.setTitleColor(Constant.Colors.white, for: .highlighted)
-        
-        button.setBackgroundColor(Constant.Colors.white, for: .normal)
-        button.setBackgroundColor(Constant.Colors.darkGray, for: .highlighted)
-        
-        button.layer.borderWidth = 1
-        button.layer.borderColor = Constant.Colors.lightGray.cgColor
-        button.layer.cornerRadius = 8
-        button.layer.masksToBounds = true
-        return button
-    }()
+    private let accuracyButton = SortButton(title: Constant.SearchResultStrings.sortAccuracy.rawValue)
     
     override func viewDidLoad() {
         super.viewDidLoad()
