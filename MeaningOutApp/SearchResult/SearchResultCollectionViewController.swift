@@ -51,6 +51,9 @@ class SearchResultCollectionViewController: UIViewController {
         if let query = searchQuery {
             self.navigationItem.title = query
         }
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: Constant.ButtonImages.backButton, style: .plain, target: self, action: nil)
+        self.navigationController?.navigationBar.tintColor = Constant.FontColors.black
     }
     
 
