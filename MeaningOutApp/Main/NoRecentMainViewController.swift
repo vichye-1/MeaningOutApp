@@ -103,6 +103,7 @@ final class NoRecentMainViewController: UIViewController {
     func showSearchResults() {
         let searchResultVC = SearchResultCollectionViewController()
         searchResultVC.shoppingList = self.shoppingList
+        searchResultVC.searchQuery = currentQuery
         self.navigationController?.pushViewController(searchResultVC, animated: true)
     }
 }
