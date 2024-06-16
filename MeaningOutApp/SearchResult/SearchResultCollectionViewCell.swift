@@ -31,6 +31,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.backgroundColor = .brown
         label.numberOfLines = 2
+        label.text = "keyboard"
         return label
     }()
     
@@ -75,7 +76,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         productNameLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(companyLabel.snp.bottom)
-            make.height.equalTo(40)
+            make.height.lessThanOrEqualTo(40)
         }
         
         priceLabel.snp.makeConstraints { make in
