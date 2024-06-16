@@ -15,6 +15,7 @@ class SearchResultCollectionViewController: UIViewController {
     var searchQuery: String?
     var currentTotal: Int = 0
     var page = 1
+    var callRequestShopping: String = ""
     
     private let searchCountLabel: UILabel = {
        let label = UILabel()
@@ -146,16 +147,18 @@ extension SearchResultCollectionViewController: UICollectionViewDelegate, UIColl
     }
 }
 
-extension SearchResultCollectionViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        guard let shoppingList = shoppingList else {
-            return
-        }
-        for item in indexPaths {
-            if shoppingList.items.count - 2 == item.row {
-                page += 1
-                
-            }
-        }
-    }
-}
+//extension SearchResultCollectionViewController: UICollectionViewDataSourcePrefetching {
+//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+//        guard let shoppingList = shoppingList else {
+//            return
+//        }
+//        for item in indexPaths {
+//            if shoppingList.items.count - 2 == item.row {
+//                page += 1
+//                if let query = searchQuery {
+//                    callRequestShopping(query: searchQuery)
+//                }
+//            }
+//        }
+//    }
+//}
