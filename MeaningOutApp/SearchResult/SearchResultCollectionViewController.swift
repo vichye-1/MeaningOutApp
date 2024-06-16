@@ -44,6 +44,24 @@ class SearchResultCollectionViewController: UIViewController {
         return view
     }()
     
+    private let searchCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: searchCollectionViewLayout())
+        return collectionView
+    }()
+    
+    static func searchCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let sectionSpacing: CGFloat = 20
+        let cellSpacing: CGFloat = 16
+        let width = UIScreen.main.bounds.width - (sectionSpacing * 2) - cellSpacing
+        layout.itemSize = CGSize(width: width/2, height: width/2 * 1.8)
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = cellSpacing
+        layout.minimumInteritemSpacing = cellSpacing
+        //layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return layout
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
@@ -55,9 +73,10 @@ class SearchResultCollectionViewController: UIViewController {
     private func configureHierarchy() {
         view.addSubview(searchCountLabel)
         view.addSubview(stackView)
-        [accuracyButton, dateButton, expensiveButton, cheapButton, spacingView].map {
+        [accuracyButton, dateButton, expensiveButton, cheapButton, spacingView].forEach {
             stackView.addArrangedSubview($0)
         }
+        view.addSubview(searchCollectionView)
     }
     
     private func configureLayout() {
@@ -76,10 +95,18 @@ class SearchResultCollectionViewController: UIViewController {
         spacingView.snp.makeConstraints { make in
             make.width.equalTo(90)
         }
+        
+        searchCollectionView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(stackView.snp.bottom).offset(16)
+        }
     }
     
     private func configureCollectionView() {
-        
+        searchCollectionView.delegate = self
+        searchCollectionView.dataSource = self
+        searchCollectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCollectionViewCell.identifier)
     }
     
     private func configureUI() {
@@ -89,6 +116,15 @@ class SearchResultCollectionViewController: UIViewController {
         }
         searchCountLabel.text = "\(currentTotal.formatted())\(Constant.SearchResultStrings.result.rawValue)"
     }
-    
+}
 
+extension SearchResultCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.identifier, for: indexPath) as! SearchResultCollectionViewCell
+        return cell
+    }
 }
