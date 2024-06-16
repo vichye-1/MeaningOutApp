@@ -21,6 +21,12 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    let companyLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .green
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCollectionViewCellHierarchy()
@@ -30,6 +36,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     private func configureCollectionViewCellHierarchy() {
         addSubview(shoppingImageView)
         addSubview(likeButton)
+        addSubview(companyLabel)
     }
     
     private func configureCollectionViewLayout() {
@@ -42,6 +49,12 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
             make.bottom.equalTo(shoppingImageView.snp.bottom).inset(16)
             make.trailing.equalTo(shoppingImageView.snp.trailing).inset(16)
             make.height.width.equalTo(34)
+        }
+        
+        companyLabel.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.top.equalTo(shoppingImageView.snp.bottom).offset(4)
+            make.height.equalTo(20)
         }
     }
     
