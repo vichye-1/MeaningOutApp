@@ -22,7 +22,27 @@ class SearchResultCollectionViewController: UIViewController {
         return label
     }()
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 4
+        return stackView
+    }()
+    
     private let accuracyButton = SortButton(title: Constant.SearchResultStrings.sortAccuracy.rawValue)
+    
+    private let dateButton = SortButton(title: Constant.SearchResultStrings.sortDate.rawValue)
+    
+    private let expensiveButton = SortButton(title: Constant.SearchResultStrings.expensive.rawValue)
+    
+    private let cheapButton = SortButton(title: Constant.SearchResultStrings.cheap.rawValue)
+    
+    private let spacingView: UIView = {
+        let view = UIView()
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +54,11 @@ class SearchResultCollectionViewController: UIViewController {
     
     private func configureHierarchy() {
         view.addSubview(searchCountLabel)
-        view.addSubview(accuracyButton)
+        view.addSubview(stackView)
+        [accuracyButton, dateButton, expensiveButton, cheapButton, spacingView].map {
+            self.stackView.addArrangedSubview($0)
+        }
+        
     }
     
     private func configureLayout() {
@@ -44,9 +68,9 @@ class SearchResultCollectionViewController: UIViewController {
             make.height.equalTo(20)
         }
         
-        accuracyButton.snp.makeConstraints { make in
+        stackView.snp.makeConstraints { make in
             make.top.equalTo(searchCountLabel.snp.bottom).offset(8)
-            make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(34)
         }
     }
