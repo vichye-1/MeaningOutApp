@@ -84,7 +84,8 @@ final class NoRecentMainViewController: UIViewController {
     func callRequestShopping(query: String) {
         let url = ShoppingURL.shoppingURL
         let parameter: Parameters = [
-            APIParameterAndHeaders.param : query
+            APIParameterAndHeaders.query: query,
+            APIParameterAndHeaders.display: 30
         ]
         let header: HTTPHeaders = [
             APIParameterAndHeaders.naverId: ShoppingKeys.id,
