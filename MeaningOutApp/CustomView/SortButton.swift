@@ -20,7 +20,7 @@ class SortButton: UIButton {
        
        layer.borderWidth = 1
        layer.borderColor = Constant.Colors.lightGray.cgColor
-       layer.cornerRadius = 8
+        layer.cornerRadius = 16
        layer.masksToBounds = true
     }
     required init?(coder: NSCoder) {
