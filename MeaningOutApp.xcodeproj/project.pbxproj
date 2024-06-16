@@ -32,6 +32,7 @@
 		EF79C43F2C1F0E3E009E66BD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF79C43E2C1F0E3E009E66BD /* Kingfisher */; };
 		EF79C4422C1F0E49009E66BD /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF79C4412C1F0E49009E66BD /* IQKeyboardManagerSwift */; };
 		EF79C4442C1F16BB009E66BD /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4432C1F16BB009E66BD /* String+.swift */; };
+		EF79C4462C1F1C39009E66BD /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4452C1F1C39009E66BD /* ProductDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		EF79C4392C1ED662009E66BD /* ReuseidentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseidentifierProtocol.swift; sourceTree = "<group>"; };
 		EF79C43B2C1ED6A6009E66BD /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		EF79C4432C1F16BB009E66BD /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		EF79C4452C1F1C39009E66BD /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				EF79C42B2C1AF6F9009E66BD /* SearchResultCollectionViewController.swift */,
 				EF79C4362C1E918B009E66BD /* SearchResultCollectionViewCell.swift */,
+				EF79C4452C1F1C39009E66BD /* ProductDetailViewController.swift */,
 			);
 			path = SearchResult;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				EF79C4332C1C75B9009E66BD /* UIButton+.swift in Sources */,
 				EF79C4152C1ADB71009E66BD /* Constant.swift in Sources */,
 				EF79C4132C1AD95B009E66BD /* APIKey.swift in Sources */,
+				EF79C4462C1F1C39009E66BD /* ProductDetailViewController.swift in Sources */,
 				EF79C4352C1C8408009E66BD /* SortButton.swift in Sources */,
 				EF79C4372C1E918B009E66BD /* SearchResultCollectionViewCell.swift in Sources */,
 				EF79C3F92C1AD6FE009E66BD /* SceneDelegate.swift in Sources */,

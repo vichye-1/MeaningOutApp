@@ -21,10 +21,15 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     
     let likeButton: UIButton = {
        let button = UIButton()
-        button.setImage(Constant.ButtonImages.likeButton, for: .normal)
+        button.setImage(Constant.ButtonImages.likeButton, for: .selected)
         button.setImage(Constant.ButtonImages.unselectedLikeButton, for: .normal)
+        button.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    @objc private func likeButtonTapped() {
+        likeButton.isSelected.toggle()
+    }
     
     let companyLabel: UILabel = {
         let label = UILabel()
