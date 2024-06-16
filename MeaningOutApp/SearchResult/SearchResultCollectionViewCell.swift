@@ -97,7 +97,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
             shoppingImageView.kf.setImage(with: url)
         }
         companyLabel.text = item.mallName
-        productNameLabel.text = item.title
+        productNameLabel.text = item.title.htmlEscaped
         if let priceInt = Int(item.lprice) {
             priceLabel.text = "\(priceInt.formatted())원"
         } else {
