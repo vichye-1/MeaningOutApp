@@ -28,21 +28,22 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     
     let companyLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .green
+        label.font = Constant.FontSize.regular13
+        label.textColor = Constant.Colors.lightGray
         return label
     }()
     
     let productNameLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .brown
+        label.font = Constant.FontSize.regular15
+        label.textColor = Constant.Colors.black
         label.numberOfLines = 2
-        label.text = "keyboard"
         return label
     }()
     
     let priceLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .cyan
+        label.font = Constant.FontSize.bold16
         return label
     }()
     
@@ -97,7 +98,11 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         }
         companyLabel.text = item.mallName
         productNameLabel.text = item.title
-        priceLabel.text = item.lprice
+        if let priceInt = Int(item.lprice) {
+            priceLabel.text = "\(priceInt.formatted())원"
+        } else {
+            priceLabel.text = "가격 정보 없음"
+        }
     }
     
     required init?(coder: NSCoder) {

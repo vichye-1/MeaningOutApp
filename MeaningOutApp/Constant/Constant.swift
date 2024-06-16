@@ -22,6 +22,7 @@ enum Constant {
         static let regular15 = UIFont.systemFont(ofSize: 15)
         static let bold13 = UIFont.systemFont(ofSize: 13, weight: .bold)
         static let bold15 = UIFont.systemFont(ofSize: 15, weight: .bold)
+        static let bold16 = UIFont.systemFont(ofSize: 16, weight: .bold)
     }
     
     enum ButtonImages {
