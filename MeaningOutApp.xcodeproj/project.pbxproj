@@ -29,6 +29,8 @@
 		EF79C4372C1E918B009E66BD /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4362C1E918B009E66BD /* SearchResultCollectionViewCell.swift */; };
 		EF79C43A2C1ED662009E66BD /* ReuseidentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4392C1ED662009E66BD /* ReuseidentifierProtocol.swift */; };
 		EF79C43C2C1ED6A6009E66BD /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C43B2C1ED6A6009E66BD /* UICollectionViewCell+.swift */; };
+		EF79C43F2C1F0E3E009E66BD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF79C43E2C1F0E3E009E66BD /* Kingfisher */; };
+		EF79C4422C1F0E49009E66BD /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EF79C4412C1F0E49009E66BD /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF79C43F2C1F0E3E009E66BD /* Kingfisher in Frameworks */,
+				EF79C4422C1F0E49009E66BD /* IQKeyboardManagerSwift in Frameworks */,
 				EF79C40C2C1AD82E009E66BD /* Alamofire in Frameworks */,
 				EF79C40F2C1AD839009E66BD /* SnapKit in Frameworks */,
 			);
@@ -204,6 +208,8 @@
 			packageProductDependencies = (
 				EF79C40B2C1AD82E009E66BD /* Alamofire */,
 				EF79C40E2C1AD839009E66BD /* SnapKit */,
+				EF79C43E2C1F0E3E009E66BD /* Kingfisher */,
+				EF79C4412C1F0E49009E66BD /* IQKeyboardManagerSwift */,
 			);
 			productName = MeaningOutApp;
 			productReference = EF79C3F32C1AD6FE009E66BD /* MeaningOutApp.app */;
@@ -236,6 +242,8 @@
 			packageReferences = (
 				EF79C40A2C1AD82E009E66BD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				EF79C40D2C1AD839009E66BD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				EF79C43D2C1F0E3E009E66BD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EF79C4402C1F0E49009E66BD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = EF79C3F42C1AD6FE009E66BD /* Products */;
 			projectDirPath = "";
@@ -529,6 +537,22 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		EF79C43D2C1F0E3E009E66BD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		EF79C4402C1F0E49009E66BD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -541,6 +565,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF79C40D2C1AD839009E66BD /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		EF79C43E2C1F0E3E009E66BD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF79C43D2C1F0E3E009E66BD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		EF79C4412C1F0E49009E66BD /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF79C4402C1F0E49009E66BD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

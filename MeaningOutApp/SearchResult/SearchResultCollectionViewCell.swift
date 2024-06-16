@@ -6,18 +6,23 @@
 //
 
 import UIKit
+import SnapKit
+import Kingfisher
 
 class SearchResultCollectionViewCell: UICollectionViewCell {
     
     let shoppingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 14
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     let likeButton: UIButton = {
        let button = UIButton()
-        button.backgroundColor = .white
+        button.setImage(Constant.ButtonImages.likeButton, for: .normal)
+        button.setImage(Constant.ButtonImages.unselectedLikeButton, for: .normal)
         return button
     }()
     
@@ -76,7 +81,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         productNameLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(companyLabel.snp.bottom)
-            make.height.lessThanOrEqualTo(40)
+            make.height.lessThanOrEqualTo(50)
         }
         
         priceLabel.snp.makeConstraints { make in
@@ -84,6 +89,15 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(productNameLabel.snp.bottom)
             make.height.equalTo(24)
         }
+    }
+    
+    func configureValue(item: Items) {
+        if let url = URL(string: item.image) {
+            shoppingImageView.kf.setImage(with: url)
+        }
+        companyLabel.text = item.mallName
+        productNameLabel.text = item.title
+        priceLabel.text = item.lprice
     }
     
     required init?(coder: NSCoder) {

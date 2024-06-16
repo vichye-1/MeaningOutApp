@@ -124,6 +124,9 @@ extension SearchResultCollectionViewController: UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.identifier, for: indexPath) as! SearchResultCollectionViewCell
+        if let item = shoppingList?.items[indexPath.item] {
+            cell.configureValue(item: item)
+        }
         return cell
     }
 }

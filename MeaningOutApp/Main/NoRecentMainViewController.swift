@@ -16,9 +16,9 @@ final class NoRecentMainViewController: UIViewController {
     var totalItems: Int = 0
     
     var shoppingList = ShoppingResult(total: 0, start: 0, display: 0, items: [])
-
+    
     private let shoppingSearchBar: UISearchBar = {
-       let searchBar = UISearchBar()
+        let searchBar = UISearchBar()
         searchBar.placeholder = Constant.SearchBarPlaceHolder.mainPlaceHolder.rawValue
         return searchBar
     }()
