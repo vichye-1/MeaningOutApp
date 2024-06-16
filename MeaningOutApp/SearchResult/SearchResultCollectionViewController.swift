@@ -129,4 +129,14 @@ extension SearchResultCollectionViewController: UICollectionViewDelegate, UIColl
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let shoppingList = shoppingList else {
+            return
+        }
+        let detailVC = ProductDetailViewController()
+        let item = shoppingList.items[indexPath.item]
+        detailVC.productName = item.title.htmlEscaped
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
