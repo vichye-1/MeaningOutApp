@@ -7,26 +7,35 @@
 
 import UIKit
 import WebKit
+import SnapKit
 
 class ProductDetailViewController: UIViewController {
     
     var productName: String = ""
     var productLink: String = ""
     var isLiked: Bool = false
+    
+    private let webView: WKWebView = {
+        let webView = WKWebView()
+        return webView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
         configureLayout()
         configureUI()
+        configureWebView()
     }
     
     private func configureHierarchy() {
-        
+        view.addSubview(webView)
     }
     
     private func configureLayout() {
-        
+        webView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     private func configureUI() {
@@ -34,4 +43,10 @@ class ProductDetailViewController: UIViewController {
         navigationItem.title = productName
     }
     
+    private func configureWebView() {
+        if let url = URL(string: productLink) {
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
+    }
 }

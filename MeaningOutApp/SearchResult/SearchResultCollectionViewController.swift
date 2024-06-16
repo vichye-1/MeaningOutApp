@@ -137,6 +137,7 @@ extension SearchResultCollectionViewController: UICollectionViewDelegate, UIColl
         let detailVC = ProductDetailViewController()
         let item = shoppingList.items[indexPath.item]
         detailVC.productName = item.title.htmlEscaped
+        detailVC.productLink = item.link
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
