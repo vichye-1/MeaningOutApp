@@ -37,6 +37,7 @@ enum Constant {
     }
     
     enum ImageViews {
+        static let launch = UIImage(named: "launch")
         static let noRecent = UIImage(named: "empty")
         static let profile0 = UIImage(named: "profile_0")
         static let profile1 = UIImage(named: "profile_1")

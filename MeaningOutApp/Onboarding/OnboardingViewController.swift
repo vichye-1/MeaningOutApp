@@ -18,6 +18,13 @@ class OnboardingViewController: UIViewController {
         return label
     }()
     
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = Constant.ImageViews.launch
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
@@ -27,6 +34,7 @@ class OnboardingViewController: UIViewController {
     
     private func configureHierarchy() {
         view.addSubview(locoLabel)
+        view.addSubview(logoImageView)
     }
     
     private func configureLayout() {
@@ -35,6 +43,13 @@ class OnboardingViewController: UIViewController {
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(100)
+        }
+        
+        logoImageView.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(82)
+            make.height.equalTo(290)
+            make.top.equalTo(locoLabel.snp.bottom).offset(70)
         }
     }
     
