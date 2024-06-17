@@ -10,16 +10,14 @@ import SnapKit
 
 class NicknameSettingViewController: UIViewController {
     
-    private let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.borderWidth = 3
-        imageView.layer.borderColor = Constant.Colors.mainOrange.cgColor
-        imageView.layer.cornerRadius = 65
-        return imageView
-    }()
-    
     private let profileButton: UIButton = {
         let button = UIButton()
+        button.setImage(UIImage(named: "profile_\(Int.random(in: 0...11))"), for: .normal)
+        button.contentMode = .scaleAspectFill
+        button.layer.borderWidth = 3
+        button.layer.borderColor = Constant.Colors.mainOrange.cgColor
+        button.layer.cornerRadius = 55
+        button.layer.masksToBounds = true
         return button
     }()
     
@@ -31,14 +29,14 @@ class NicknameSettingViewController: UIViewController {
     }
     
     func configureHierarchy() {
-        view.addSubview(profileImageView)
+        view.addSubview(profileButton)
     }
     
     func configureLayout() {
-        profileImageView.snp.makeConstraints { make in
+        profileButton.snp.makeConstraints { make in
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.width.height.equalTo(130)
+            make.width.height.equalTo(110)
         }
     }
     
@@ -50,5 +48,5 @@ class NicknameSettingViewController: UIViewController {
         
     }
     
-
+    
 }
