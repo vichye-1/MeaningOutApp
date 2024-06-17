@@ -21,6 +21,16 @@ class NicknameSettingViewController: UIViewController {
         return button
     }()
     
+    private let nicknameTextfield: UITextField = {
+        let textfield = UITextField()
+        textfield.borderStyle = .none
+        textfield.textColor = Constant.Colors.gray
+        textfield.placeholder = Constant.NicknameStrings.inputNickname.rawValue
+        textfield.font = Constant.FontSize.regular13
+        textfield.textAlignment = .left
+        return textfield
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
@@ -30,6 +40,7 @@ class NicknameSettingViewController: UIViewController {
     
     func configureHierarchy() {
         view.addSubview(profileButton)
+        view.addSubview(nicknameTextfield)
     }
     
     func configureLayout() {
@@ -37,6 +48,11 @@ class NicknameSettingViewController: UIViewController {
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.width.height.equalTo(110)
+        }
+        
+        nicknameTextfield.snp.makeConstraints { make in
+            make.top.equalTo(profileButton.snp.bottom).offset(34)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
     
