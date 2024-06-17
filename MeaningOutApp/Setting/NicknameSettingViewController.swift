@@ -37,6 +37,14 @@ class NicknameSettingViewController: UIViewController {
         return view
     }()
     
+    private let stateLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constant.NicknameStrings.rightNickname.rawValue
+        label.font = Constant.FontSize.regular13
+        label.textColor = Constant.Colors.mainOrange
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
@@ -48,6 +56,7 @@ class NicknameSettingViewController: UIViewController {
         view.addSubview(profileButton)
         view.addSubview(nicknameTextfield)
         view.addSubview(underlineView)
+        view.addSubview(stateLabel)
     }
     
     func configureLayout() {
@@ -65,6 +74,11 @@ class NicknameSettingViewController: UIViewController {
             make.top.equalTo(nicknameTextfield.snp.bottom)
             make.horizontalEdges.equalTo(nicknameTextfield)
             make.height.equalTo(1)
+        }
+        stateLabel.snp.makeConstraints { make in
+            make.top.equalTo(underlineView.snp.bottom).offset(8)
+            make.horizontalEdges.equalTo(underlineView)
+            make.height.equalTo(24)
         }
     }
     
