@@ -24,7 +24,7 @@ class NicknameSettingViewController: UIViewController {
     private let nicknameTextfield: UITextField = {
         let textfield = UITextField()
         textfield.borderStyle = .none
-        textfield.textColor = Constant.Colors.gray
+        textfield.textColor = Constant.Colors.black
         textfield.placeholder = Constant.NicknameStrings.inputNickname.rawValue
         textfield.font = Constant.FontSize.regular13
         textfield.textAlignment = .left
@@ -42,8 +42,11 @@ class NicknameSettingViewController: UIViewController {
         label.text = Constant.NicknameStrings.rightNickname.rawValue
         label.font = Constant.FontSize.regular13
         label.textColor = Constant.Colors.mainOrange
+        label.textAlignment = .left
         return label
     }()
+    
+    private let completeButton = OrangeButton(title: Constant.OtherStrings.complete.rawValue)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +60,7 @@ class NicknameSettingViewController: UIViewController {
         view.addSubview(nicknameTextfield)
         view.addSubview(underlineView)
         view.addSubview(stateLabel)
+        view.addSubview(completeButton)
     }
     
     func configureLayout() {
@@ -79,6 +83,11 @@ class NicknameSettingViewController: UIViewController {
             make.top.equalTo(underlineView.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(underlineView)
             make.height.equalTo(24)
+        }
+        completeButton.snp.makeConstraints { make in
+            make.top.equalTo(stateLabel.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(stateLabel)
+            make.height.equalTo(44)
         }
     }
     
