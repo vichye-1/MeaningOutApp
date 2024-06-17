@@ -26,6 +26,8 @@ class ProfileImageSettingViewController: UIViewController {
     }()
     
     private let stackView0 = MakeStackView()
+    private let stackView1 = MakeStackView()
+    private let stackView2 = MakeStackView()
     
     private let profileButtonImage0 = ProfileImageButton(name: Constant.ImageViews.profile0!)
     private let profileButtonImage1 = ProfileImageButton(name: Constant.ImageViews.profile1!)
@@ -50,16 +52,26 @@ class ProfileImageSettingViewController: UIViewController {
     
     func configureHierarchy() {
         view.addSubview(profileButton)
-        view.addSubview(profileButtonImage0)
         view.addSubview(stackView0)
+        view.addSubview(stackView1)
+        view.addSubview(stackView2)
+        
         [profileButtonImage0, profileButtonImage1, profileButtonImage2, profileButtonImage3].forEach {
             stackView0.addArrangedSubview($0)
+            $0.addTarget(self, action: #selector(handleProfileButtonTap), for: .touchUpInside)
+        }
+        [profileButtonImage4, profileButtonImage5, profileButtonImage6, profileButtonImage7].forEach {
+            stackView1.addArrangedSubview($0)
+            $0.addTarget(self, action: #selector(handleProfileButtonTap), for: .touchUpInside)
+        }
+        [profileButtonImage8, profileButtonImage9, profileButtonImage10, profileButtonImage11].forEach {
+            stackView2.addArrangedSubview($0)
             $0.addTarget(self, action: #selector(handleProfileButtonTap), for: .touchUpInside)
         }
     }
     
     @objc func handleProfileButtonTap(_ sender: ProfileImageButton) {
-            buttons0.forEach { $0.isSelected = false }
+            (buttons0 + buttons1 + buttons2).forEach { $0.isSelected = false }
             sender.isSelected = true
             profileButton.setImage(sender.image(for: .normal), for: .normal)
         }
@@ -72,7 +84,7 @@ class ProfileImageSettingViewController: UIViewController {
         }
         
         stackView0.snp.makeConstraints { make in
-            make.top.equalTo(profileButton.snp.bottom).offset(34)
+            make.top.equalTo(profileButton.snp.bottom).offset(54)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(75)
         }
@@ -80,6 +92,30 @@ class ProfileImageSettingViewController: UIViewController {
         for button in buttons0 {
             button.snp.makeConstraints { make in
                 make.width.height.equalTo(stackView0.snp.height)
+            }
+        }
+        
+        stackView1.snp.makeConstraints { make in
+            make.top.equalTo(stackView0.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(75)
+        }
+        
+        for button in buttons1 {
+            button.snp.makeConstraints { make in
+                make.width.height.equalTo(stackView1.snp.height)
+            }
+        }
+        
+        stackView2.snp.makeConstraints { make in
+            make.top.equalTo(stackView1.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(75)
+        }
+        
+        for button in buttons2 {
+            button.snp.makeConstraints { make in
+                make.width.height.equalTo(stackView2.snp.height)
             }
         }
     }
