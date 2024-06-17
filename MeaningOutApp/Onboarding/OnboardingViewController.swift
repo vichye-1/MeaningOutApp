@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class OnboardingViewController: UIViewController {
 
@@ -25,6 +26,8 @@ class OnboardingViewController: UIViewController {
         return imageView
     }()
     
+    private let startButton = OrangeButton(title: Constant.OtherStrings.start.rawValue)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
@@ -35,6 +38,7 @@ class OnboardingViewController: UIViewController {
     private func configureHierarchy() {
         view.addSubview(locoLabel)
         view.addSubview(logoImageView)
+        view.addSubview(startButton)
     }
     
     private func configureLayout() {
@@ -50,6 +54,13 @@ class OnboardingViewController: UIViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(82)
             make.height.equalTo(290)
             make.top.equalTo(locoLabel.snp.bottom).offset(70)
+        }
+        
+        startButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(44)
         }
     }
     

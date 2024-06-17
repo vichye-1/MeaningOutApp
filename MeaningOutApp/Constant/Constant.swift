@@ -85,6 +85,7 @@ enum Constant {
     }
     
     enum OtherStrings: String {
+        case start = "시작하기"
         case complete = "완료"
         case noRecent = "최근 검색어가 없어요"
     }

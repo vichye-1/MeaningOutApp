@@ -16,7 +16,7 @@ class SortButton: UIButton {
        setTitleColor(Constant.Colors.white, for: .highlighted)
        
        setBackgroundColor(Constant.Colors.white, for: .normal)
-       setBackgroundColor(Constant.Colors.darkGray, for: .highlighted)
+       setBackgroundColor(Constant.Colors.darkGray, for: .selected)
        
        layer.borderWidth = 1
        layer.borderColor = Constant.Colors.lightGray.cgColor
