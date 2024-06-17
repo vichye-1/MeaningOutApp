@@ -10,9 +10,12 @@ import SnapKit
 
 class NicknameSettingViewController: UIViewController {
     
-    private let profileButton: UIButton = {
+    var currentProfile = 0
+    
+    let profileButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "profile_\(Int.random(in: 0...11))"), for: .normal)
+        var randomIdx = Int.random(in: 0...11)
+        button.setImage(UIImage(named: "profile_\(randomIdx)"), for: .normal)
         button.contentMode = .scaleAspectFill
         button.layer.borderWidth = 3
         button.layer.borderColor = Constant.Colors.mainOrange.cgColor
@@ -54,6 +57,7 @@ class NicknameSettingViewController: UIViewController {
         configureLayout()
         configureUI()
         completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
+        profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
     }
     
     @objc func completeButtonClicked() {
@@ -63,6 +67,10 @@ class NicknameSettingViewController: UIViewController {
         let rootViewController = TabBarController()
         sceneDelegate?.window?.rootViewController = rootViewController
         sceneDelegate?.window?.makeKeyAndVisible()
+    }
+    
+    @objc func profileButtonClicked() {
+        navigationController?.pushViewController(ProfileImageSettingViewController(), animated: true)
     }
     
     func configureHierarchy() {

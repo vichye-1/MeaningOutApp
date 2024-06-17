@@ -8,13 +8,26 @@
 import UIKit
 
 class MainSettingViewController: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureHierarchy()
+        configureLayout()
+        configureUI()
     }
     
+    private func configureHierarchy() {
+        
+    }
+    
+    private func configureLayout() {
+        
+    }
 
-
+    private func configureUI() {
+        
+    }
 
 }
