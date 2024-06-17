@@ -33,7 +33,6 @@ class OnboardingViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
-        
         startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
     }
     

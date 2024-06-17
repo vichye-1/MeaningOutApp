@@ -53,6 +53,16 @@ class NicknameSettingViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func completeButtonClicked() {
+        UserDefaults.standard.set(true, forKey: "isUser")
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let rootViewController = TabBarController()
+        sceneDelegate?.window?.rootViewController = rootViewController
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
     
     func configureHierarchy() {
