@@ -25,16 +25,8 @@ class ProfileImageSettingViewController: UIViewController {
         return button
     }()
     
-    private let stackView0: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 4
-        return stackView
-    }()
-
+    private let stackView0 = MakeStackView()
+    
     private let profileButtonImage0 = ProfileImageButton(name: Constant.ImageViews.profile0!)
     private let profileButtonImage1 = ProfileImageButton(name: Constant.ImageViews.profile1!)
     private let profileButtonImage2 = ProfileImageButton(name: Constant.ImageViews.profile2!)
@@ -62,8 +54,15 @@ class ProfileImageSettingViewController: UIViewController {
         view.addSubview(stackView0)
         [profileButtonImage0, profileButtonImage1, profileButtonImage2, profileButtonImage3].forEach {
             stackView0.addArrangedSubview($0)
+            $0.addTarget(self, action: #selector(handleProfileButtonTap), for: .touchUpInside)
         }
     }
+    
+    @objc func handleProfileButtonTap(_ sender: ProfileImageButton) {
+            buttons0.forEach { $0.isSelected = false }
+            sender.isSelected = true
+            profileButton.setImage(sender.image(for: .normal), for: .normal)
+        }
     
     func configureLayout() {
         profileButton.snp.makeConstraints { make in
