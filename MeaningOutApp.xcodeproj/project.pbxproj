@@ -35,6 +35,7 @@
 		EF79C4482C1FB3E4009E66BD /* OrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4472C1FB3E4009E66BD /* OrangeButton.swift */; };
 		EF79C4772C201016009E66BD /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4762C201016009E66BD /* NicknameSettingViewController.swift */; };
 		EF79C4792C2029E0009E66BD /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4782C2029E0009E66BD /* ProfileImageSettingViewController.swift */; };
+		EF79C47B2C202F6D009E66BD /* ProfileImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C47A2C202F6D009E66BD /* ProfileImageButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		EF79C4472C1FB3E4009E66BD /* OrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
 		EF79C4762C201016009E66BD /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		EF79C4782C2029E0009E66BD /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
+		EF79C47A2C202F6D009E66BD /* ProfileImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				EF79C4232C1AE50F009E66BD /* TabBarController.swift */,
 				EF79C4342C1C8408009E66BD /* SortButton.swift */,
 				EF79C4472C1FB3E4009E66BD /* OrangeButton.swift */,
+				EF79C47A2C202F6D009E66BD /* ProfileImageButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				EF79C4772C201016009E66BD /* NicknameSettingViewController.swift in Sources */,
 				EF79C4352C1C8408009E66BD /* SortButton.swift in Sources */,
 				EF79C4372C1E918B009E66BD /* SearchResultCollectionViewCell.swift in Sources */,
+				EF79C47B2C202F6D009E66BD /* ProfileImageButton.swift in Sources */,
 				EF79C3F92C1AD6FE009E66BD /* SceneDelegate.swift in Sources */,
 				EF79C4442C1F16BB009E66BD /* String+.swift in Sources */,
 				EF79C43A2C1ED662009E66BD /* ReuseidentifierProtocol.swift in Sources */,
