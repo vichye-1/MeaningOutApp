@@ -10,7 +10,6 @@
 		EF79C3F72C1AD6FE009E66BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3F62C1AD6FE009E66BD /* AppDelegate.swift */; };
 		EF79C3F92C1AD6FE009E66BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3F82C1AD6FE009E66BD /* SceneDelegate.swift */; };
 		EF79C3FB2C1AD6FE009E66BD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3FA2C1AD6FE009E66BD /* OnboardingViewController.swift */; };
-		EF79C3FE2C1AD6FE009E66BD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = EF79C3FD2C1AD6FE009E66BD /* Base */; };
 		EF79C4002C1AD700009E66BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF79C3FF2C1AD700009E66BD /* Assets.xcassets */; };
 		EF79C4032C1AD700009E66BD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = EF79C4022C1AD700009E66BD /* Base */; };
 		EF79C40C2C1AD82E009E66BD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = EF79C40B2C1AD82E009E66BD /* Alamofire */; };
@@ -34,6 +33,7 @@
 		EF79C4442C1F16BB009E66BD /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4432C1F16BB009E66BD /* String+.swift */; };
 		EF79C4462C1F1C39009E66BD /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4452C1F1C39009E66BD /* ProductDetailViewController.swift */; };
 		EF79C4482C1FB3E4009E66BD /* OrangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4472C1FB3E4009E66BD /* OrangeButton.swift */; };
+		EF79C4772C201016009E66BD /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C4762C201016009E66BD /* NicknameSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,6 @@
 		EF79C3F62C1AD6FE009E66BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF79C3F82C1AD6FE009E66BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EF79C3FA2C1AD6FE009E66BD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		EF79C3FD2C1AD6FE009E66BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF79C3FF2C1AD700009E66BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF79C4022C1AD700009E66BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF79C4042C1AD700009E66BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		EF79C4432C1F16BB009E66BD /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		EF79C4452C1F1C39009E66BD /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		EF79C4472C1FB3E4009E66BD /* OrangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeButton.swift; sourceTree = "<group>"; };
+		EF79C4762C201016009E66BD /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,6 @@
 				EF79C4162C1ADB79009E66BD /* Constant */,
 				EF79C3F62C1AD6FE009E66BD /* AppDelegate.swift */,
 				EF79C3F82C1AD6FE009E66BD /* SceneDelegate.swift */,
-				EF79C3FC2C1AD6FE009E66BD /* Main.storyboard */,
 				EF79C3FF2C1AD700009E66BD /* Assets.xcassets */,
 				EF79C4012C1AD700009E66BD /* LaunchScreen.storyboard */,
 				EF79C4042C1AD700009E66BD /* Info.plist */,
@@ -168,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				EF79C4262C1AE75C009E66BD /* MainSettingViewController.swift */,
+				EF79C4762C201016009E66BD /* NicknameSettingViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -271,7 +271,6 @@
 				EF79C4112C1AD8D6009E66BD /* .gitignore in Resources */,
 				EF79C4002C1AD700009E66BD /* Assets.xcassets in Resources */,
 				EF79C4032C1AD700009E66BD /* Base in Resources */,
-				EF79C3FE2C1AD6FE009E66BD /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +294,7 @@
 				EF79C4152C1ADB71009E66BD /* Constant.swift in Sources */,
 				EF79C4132C1AD95B009E66BD /* APIKey.swift in Sources */,
 				EF79C4462C1F1C39009E66BD /* ProductDetailViewController.swift in Sources */,
+				EF79C4772C201016009E66BD /* NicknameSettingViewController.swift in Sources */,
 				EF79C4352C1C8408009E66BD /* SortButton.swift in Sources */,
 				EF79C4372C1E918B009E66BD /* SearchResultCollectionViewCell.swift in Sources */,
 				EF79C3F92C1AD6FE009E66BD /* SceneDelegate.swift in Sources */,
@@ -307,14 +307,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EF79C3FC2C1AD6FE009E66BD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF79C3FD2C1AD6FE009E66BD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EF79C4012C1AD700009E66BD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -457,7 +449,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = MeaningOutApp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -489,7 +480,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = MeaningOutApp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (

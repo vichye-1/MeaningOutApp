@@ -33,6 +33,12 @@ class OnboardingViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        
+        startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func startButtonClicked() {
+        navigationController?.pushViewController(NicknameSettingViewController(), animated: true)
     }
     
     private func configureHierarchy() {
