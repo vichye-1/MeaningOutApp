@@ -12,6 +12,7 @@ class NicknameSettingViewController: UIViewController {
     
     var currentProfile = 0
     var currentNickname = ""
+    var currentDate = ""
     
     let profileButton: UIButton = {
         let button = UIButton()
@@ -62,9 +63,11 @@ class NicknameSettingViewController: UIViewController {
     }
     
     @objc func completeButtonClicked() {
+        convertDate()
         UserDefaults.standard.set(true, forKey: "isUser")
         currentNickname = nicknameTextfield.text ?? "옹골찬 고래밥"
         UserDefaults.standard.set(currentNickname, forKey: "nickname")
+        UserDefaults.standard.set(currentDate, forKey: "currentDate")
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let rootViewController = TabBarController()
@@ -117,6 +120,13 @@ class NicknameSettingViewController: UIViewController {
         navigationItem.title = Constant.TabBarTitles.profileSetting.rawValue
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = Constant.Colors.black
+    }
+    
+    func convertDate() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        let currentDateString = formatter.string(from: Date())
+        currentDate = currentDateString
     }
     
 //    func textFieldStandard() {
