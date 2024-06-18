@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+enum ValidationError: Error {
+    case stringLength
+    case isInt
+    case isSpecialCharacter
+}
+
 class NicknameSettingViewController: UIViewController {
     
     var currentProfile = 0
@@ -44,7 +50,7 @@ class NicknameSettingViewController: UIViewController {
     
     private let stateLabel: UILabel = {
         let label = UILabel()
-        label.text = Constant.NicknameStrings.rightNickname.rawValue
+        label.text = Constant.NicknameStrings.countFail.rawValue
         label.font = Constant.FontSize.regular13
         label.textColor = Constant.Colors.mainOrange
         label.textAlignment = .left
@@ -60,6 +66,7 @@ class NicknameSettingViewController: UIViewController {
         configureUI()
         completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
+        nicknameTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
     @objc func completeButtonClicked() {
@@ -77,6 +84,29 @@ class NicknameSettingViewController: UIViewController {
     
     @objc func profileButtonClicked() {
         navigationController?.pushViewController(ProfileImageSettingViewController(), animated: true)
+    }
+    
+    @objc func textFieldDidChange(_ sender: Any?) {
+        var text = nicknameTextfield.text
+        if text!.count < 2 || text!.count > 9 {
+            stateLabel.text = Constant.NicknameStrings.countFail.rawValue
+        } else if text!.contains("@") {
+            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+        } else if text!.contains("#") {
+            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+        } else if text!.contains("$") {
+            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+        } else if text!.contains("%") {
+            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+        } else if Int(text!) != nil {
+            stateLabel.text = Constant.NicknameStrings.numFail.rawValue
+        } else if text!.allSatisfy({ $0.isLetter }) {
+            stateLabel.text = Constant.NicknameStrings.rightNickname.rawValue
+        } else if !text!.allSatisfy({ $0.isNumber }) {
+            stateLabel.text = Constant.NicknameStrings.numFail.rawValue
+        } else {
+            stateLabel.text = Constant.NicknameStrings.rightNickname.rawValue
+        }
     }
     
     func configureHierarchy() {
@@ -128,10 +158,5 @@ class NicknameSettingViewController: UIViewController {
         let currentDateString = formatter.string(from: Date())
         currentDate = currentDateString
     }
-    
-//    func textFieldStandard() {
-//        let currenNickname = nicknameTextfield.text ?? ""
-//        
-//        
-//    }
 }
+
