@@ -18,13 +18,14 @@ class NicknameSettingViewController: UIViewController {
     
     let profileButton: UIButton = {
         let button = UIButton()
-        var randomIdx = Int.random(in: 0...11)
-        button.setImage(UIImage(named: "profile_\(randomIdx)"), for: .normal)
+        var randomImage = "profile_\(Int.random(in: 0...11))"
+        button.setImage(UIImage(named: randomImage), for: .normal)
         button.contentMode = .scaleAspectFill
         button.layer.borderWidth = 3
         button.layer.borderColor = Constant.Colors.mainOrange.cgColor
         button.layer.cornerRadius = 55
         button.layer.masksToBounds = true
+        UserDefaults.standard.set(randomImage, forKey: "profileImage")
         return button
     }()
     

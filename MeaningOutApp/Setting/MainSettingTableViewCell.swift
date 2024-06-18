@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 class MainSettingTableViewCell: UITableViewCell {
-
     private let profileImage: UIImageView = {
        let imageView = UIImageView()
-        imageView.image = Constant.ImageViews.profile0
+        let imageName = UserDefaults.standard.string(forKey: "profileImage")
+        imageView.image = UIImage(named: imageName!)
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = Constant.Colors.mainOrange.cgColor
         imageView.layer.cornerRadius = 50
