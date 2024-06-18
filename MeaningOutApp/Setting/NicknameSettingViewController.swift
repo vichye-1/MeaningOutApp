@@ -8,17 +8,13 @@
 import UIKit
 import SnapKit
 
-enum ValidationError: Error {
-    case stringLength
-    case isInt
-    case isSpecialCharacter
-}
-
 class NicknameSettingViewController: UIViewController {
     
     var currentProfile = 0
     var currentNickname = ""
     var currentDate = ""
+    
+    var isValidateNickname = false
     
     let profileButton: UIButton = {
         let button = UIButton()
@@ -90,22 +86,33 @@ class NicknameSettingViewController: UIViewController {
         var text = nicknameTextfield.text
         if text!.count < 2 || text!.count > 9 {
             stateLabel.text = Constant.NicknameStrings.countFail.rawValue
+            completeButton.isEnabled = false
         } else if text!.contains("@") {
             stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+            completeButton.isEnabled = false
         } else if text!.contains("#") {
             stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+            completeButton.isEnabled = false
         } else if text!.contains("$") {
             stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+            completeButton.isEnabled = false
         } else if text!.contains("%") {
             stateLabel.text = Constant.NicknameStrings.strFail.rawValue
+            completeButton.isEnabled = false
         } else if Int(text!) != nil {
             stateLabel.text = Constant.NicknameStrings.numFail.rawValue
+            completeButton.isEnabled = false
         } else if text!.allSatisfy({ $0.isLetter }) {
             stateLabel.text = Constant.NicknameStrings.rightNickname.rawValue
+            isValidateNickname = true
+            completeButton.isEnabled = true
         } else if !text!.allSatisfy({ $0.isNumber }) {
             stateLabel.text = Constant.NicknameStrings.numFail.rawValue
+            completeButton.isEnabled = false
         } else {
             stateLabel.text = Constant.NicknameStrings.rightNickname.rawValue
+            isValidateNickname = true
+            completeButton.isEnabled = true
         }
     }
     
@@ -150,6 +157,12 @@ class NicknameSettingViewController: UIViewController {
         navigationItem.title = Constant.TabBarTitles.profileSetting.rawValue
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = Constant.Colors.black
+        
+        if isValidateNickname {
+            completeButton.isEnabled = true
+        } else {
+            completeButton.isEnabled = false
+        }
     }
     
     func convertDate() {
