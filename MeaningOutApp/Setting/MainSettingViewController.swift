@@ -32,7 +32,7 @@ class MainSettingViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-
+    
     private func configureUI() {
         view.backgroundColor = Constant.Colors.white
         navigationItem.title = Constant.TabBarTitles.setting.rawValue
@@ -62,18 +62,22 @@ extension MainSettingViewController: UITableViewDelegate, UITableViewDataSource 
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = Constant.SettingStrings.myList.rawValue
+            cell.selectionStyle = .none
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = Constant.SettingStrings.question.rawValue
+            cell.selectionStyle = .none
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = Constant.SettingStrings.oneByOne.rawValue
+            cell.selectionStyle = .none
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = Constant.SettingStrings.alarm.rawValue
+            cell.selectionStyle = .none
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -88,7 +92,9 @@ extension MainSettingViewController: UITableViewDelegate, UITableViewDataSource 
         return indexPath.row == 0 ? 150 : 50
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            navigationController?.pushViewController(NicknameSettingViewController(), animated: true)
+        }
+    }
 }
