@@ -14,6 +14,7 @@ final class NoRecentMainViewController: UIViewController {
     var page = 1
     var currentQuery: String?
     var totalItems: Int = 0
+    let userNickname = UserDefaults.standard.string(forKey: "nickname")
     
     var shoppingList = ShoppingResult(total: 0, start: 0, display: 0, items: [])
     
@@ -74,7 +75,7 @@ final class NoRecentMainViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
-        self.navigationItem.title = "승혜님의 MEANING OUT"
+        self.navigationItem.title = "\(userNickname!)님의 MEANING OUT"
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = Constant.Colors.black
