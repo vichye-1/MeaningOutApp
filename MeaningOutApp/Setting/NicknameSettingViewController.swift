@@ -11,6 +11,7 @@ import SnapKit
 class NicknameSettingViewController: UIViewController {
     
     var currentProfile = 0
+    var currentNickname = ""
     
     let profileButton: UIButton = {
         let button = UIButton()
@@ -62,6 +63,8 @@ class NicknameSettingViewController: UIViewController {
     
     @objc func completeButtonClicked() {
         UserDefaults.standard.set(true, forKey: "isUser")
+        currentNickname = nicknameTextfield.text ?? "옹골찬 고래밥"
+        UserDefaults.standard.set(currentNickname, forKey: "nickname")
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         let rootViewController = TabBarController()

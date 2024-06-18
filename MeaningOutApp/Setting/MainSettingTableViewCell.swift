@@ -20,6 +20,14 @@ class MainSettingTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    private let nickNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = UserDefaults.standard.string(forKey: "nickname")
+        label.textColor = Constant.Colors.black
+        label.font = Constant.FontSize.bold16
+        return label
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -30,9 +38,9 @@ class MainSettingTableViewCell: UITableViewCell {
         configureLayout()
     }
     
-    
     private func configureHierarchy() {
         contentView.addSubview(profileImage)
+        contentView.addSubview(nickNameLabel)
     }
 
     private func configureLayout() {
@@ -40,6 +48,13 @@ class MainSettingTableViewCell: UITableViewCell {
             make.centerY.equalTo(contentView.safeAreaLayoutGuide)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.width.height.equalTo(100)
+        }
+        
+        nickNameLabel.snp.makeConstraints { make in
+            make.leading.equalTo(profileImage.snp.trailing).offset(20)
+            make.centerY.equalTo(contentView.safeAreaLayoutGuide).offset(-20)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(20)
+            make.height.equalTo(34)
         }
     }
 
