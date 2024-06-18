@@ -70,11 +70,19 @@ class SearchResultCollectionViewController: UIViewController {
         configureCollectionView()
         configureUI()
         expensiveButton.addTarget(self, action: #selector(expensiveButtonClicked), for: .touchUpInside)
+        cheapButton.addTarget(self, action: #selector(cheapButtonClikced), for: .touchUpInside)
     }
     
     @objc func expensiveButtonClicked() {
         guard var shoppingList = shoppingList else { return }
         shoppingList.items.sort { Int($0.lprice)! > Int($1.lprice)! }
+        self.shoppingList = shoppingList
+        searchCollectionView.reloadData()
+    }
+    
+    @objc func cheapButtonClikced() {
+        guard var shoppingList = shoppingList else { return }
+        shoppingList.items.sort { Int($0.lprice)! < Int($1.lprice)! }
         self.shoppingList = shoppingList
         searchCollectionView.reloadData()
     }
