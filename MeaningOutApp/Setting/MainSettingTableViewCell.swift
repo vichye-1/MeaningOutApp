@@ -29,12 +29,20 @@ class MainSettingTableViewCell: UITableViewCell {
     }()
     
     private let signUpDateLabel: UILabel = {
-        let signUpDate = UserDefaults.standard.string(forKey: "currentDate")
         let label = UILabel()
+        let signUpDate = UserDefaults.standard.string(forKey: "currentDate")
         label.text = "\(signUpDate ?? "--") 가입"
         label.textColor = Constant.Colors.gray
         label.font = Constant.FontSize.regular13
         return label
+    }()
+    
+    private let nextImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = Constant.ButtonImages.nextButton
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = Constant.Colors.gray
+        return imageView
     }()
     
     override func awakeFromNib() {
@@ -51,6 +59,7 @@ class MainSettingTableViewCell: UITableViewCell {
         contentView.addSubview(profileImage)
         contentView.addSubview(nickNameLabel)
         contentView.addSubview(signUpDateLabel)
+        contentView.addSubview(nextImage)
     }
 
     private func configureLayout() {
@@ -72,11 +81,18 @@ class MainSettingTableViewCell: UITableViewCell {
             make.centerY.equalTo(contentView.safeAreaLayoutGuide).offset(10)
             make.height.equalTo(24)
         }
+        
+        nextImage.snp.makeConstraints { make in
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.centerY.equalTo(contentView.safeAreaLayoutGuide)
+            make.height.equalTo(24)
+            make.width.equalTo(24)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     required init?(coder: NSCoder) {
