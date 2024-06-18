@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EF250D6F2C2167C100F9B14F /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF250D6E2C2167C100F9B14F /* UITableViewCell+.swift */; };
-		EF250D712C2187DB00F9B14F /* RecentExistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF250D702C2187DB00F9B14F /* RecentExistViewController.swift */; };
 		EF79C3F72C1AD6FE009E66BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3F62C1AD6FE009E66BD /* AppDelegate.swift */; };
 		EF79C3F92C1AD6FE009E66BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3F82C1AD6FE009E66BD /* SceneDelegate.swift */; };
 		EF79C3FB2C1AD6FE009E66BD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3FA2C1AD6FE009E66BD /* OnboardingViewController.swift */; };
@@ -44,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		EF250D6E2C2167C100F9B14F /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
-		EF250D702C2187DB00F9B14F /* RecentExistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentExistViewController.swift; sourceTree = "<group>"; };
 		EF79C3F32C1AD6FE009E66BD /* MeaningOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeaningOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF79C3F62C1AD6FE009E66BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF79C3F82C1AD6FE009E66BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				EF79C4202C1AE4A9009E66BD /* NoRecentMainViewController.swift */,
-				EF250D702C2187DB00F9B14F /* RecentExistViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -312,7 +309,6 @@
 				EF79C4242C1AE50F009E66BD /* TabBarController.swift in Sources */,
 				EF79C4332C1C75B9009E66BD /* UIButton+.swift in Sources */,
 				EF79C4152C1ADB71009E66BD /* Constant.swift in Sources */,
-				EF250D712C2187DB00F9B14F /* RecentExistViewController.swift in Sources */,
 				EF79C4812C20602B009E66BD /* MakeStackView.swift in Sources */,
 				EF79C4132C1AD95B009E66BD /* APIKey.swift in Sources */,
 				EF79C4462C1F1C39009E66BD /* ProductDetailViewController.swift in Sources */,
