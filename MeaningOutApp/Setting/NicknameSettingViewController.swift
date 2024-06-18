@@ -29,6 +29,17 @@ class NicknameSettingViewController: UIViewController {
         return button
     }()
     
+    let cameraButton: UIButton = {
+        let button = UIButton()
+        button.setImage(Constant.ButtonImages.cameraButton, for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.setBackgroundColor(Constant.Colors.mainOrange, for: .normal)
+        button.tintColor = Constant.Colors.white
+        button.layer.cornerRadius = 15
+        button.layer.masksToBounds = true
+        return button
+    }()
+    
     private let nicknameTextfield: UITextField = {
         let textfield = UITextField()
         textfield.borderStyle = .none
@@ -123,6 +134,7 @@ class NicknameSettingViewController: UIViewController {
         view.addSubview(underlineView)
         view.addSubview(stateLabel)
         view.addSubview(completeButton)
+        view.addSubview(cameraButton)
     }
     
     func configureLayout() {
@@ -131,6 +143,13 @@ class NicknameSettingViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.width.height.equalTo(110)
         }
+        
+        cameraButton.snp.makeConstraints { make in
+            make.width.height.equalTo(30)
+            make.bottom.equalTo(profileButton.snp.bottom).inset(10)
+            make.trailing.equalTo(profileButton.snp.trailing)
+        }
+        
         nicknameTextfield.snp.makeConstraints { make in
             make.top.equalTo(profileButton.snp.bottom).offset(24)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
