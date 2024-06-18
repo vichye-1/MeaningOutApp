@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF250D6F2C2167C100F9B14F /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF250D6E2C2167C100F9B14F /* UITableViewCell+.swift */; };
 		EF79C3F72C1AD6FE009E66BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3F62C1AD6FE009E66BD /* AppDelegate.swift */; };
 		EF79C3F92C1AD6FE009E66BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3F82C1AD6FE009E66BD /* SceneDelegate.swift */; };
 		EF79C3FB2C1AD6FE009E66BD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79C3FA2C1AD6FE009E66BD /* OnboardingViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF250D6E2C2167C100F9B14F /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		EF79C3F32C1AD6FE009E66BD /* MeaningOutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeaningOutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF79C3F62C1AD6FE009E66BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF79C3F82C1AD6FE009E66BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				EF79C4322C1C75B9009E66BD /* UIButton+.swift */,
 				EF79C43B2C1ED6A6009E66BD /* UICollectionViewCell+.swift */,
 				EF79C4432C1F16BB009E66BD /* String+.swift */,
+				EF250D6E2C2167C100F9B14F /* UITableViewCell+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				EF79C3F92C1AD6FE009E66BD /* SceneDelegate.swift in Sources */,
 				EF79C4442C1F16BB009E66BD /* String+.swift in Sources */,
 				EF79C43A2C1ED662009E66BD /* ReuseidentifierProtocol.swift in Sources */,
+				EF250D6F2C2167C100F9B14F /* UITableViewCell+.swift in Sources */,
 				EF79C4192C1ADD6D009E66BD /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

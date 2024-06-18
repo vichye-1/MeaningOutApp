@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainSettingViewController: UIViewController {
     
@@ -38,8 +39,10 @@ class MainSettingViewController: UIViewController {
     }
     
     private func configureTableView() {
+        let identifier = MainSettingTableViewCell.identifier
         profileTableView.delegate = self
         profileTableView.dataSource = self
+        profileTableView.register(MainSettingTableViewCell.self, forCellReuseIdentifier: identifier)
         profileTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }
@@ -50,35 +53,35 @@ extension MainSettingViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
-//        switch indexPath.row {
-//        case 0:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "MainSetting", for: indexPath) as! MainSettingTableViewCell
-//            return cell
-//        case 1:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//            cell.textLabel?.text = Constant.SettingStrings.myList.rawValue
-//            return cell
-//        case 2:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//            cell.textLabel?.text = Constant.SettingStrings.question.rawValue
-//            return cell
-//        case 3:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//            cell.textLabel?.text = Constant.SettingStrings.oneByOne.rawValue
-//            return cell
-//        case 4:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//            cell.textLabel?.text = Constant.SettingStrings.alarm.rawValue
-//            return cell
-//        case 5:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//            cell.textLabel?.text = Constant.SettingStrings.quit.rawValue
-//            return cell
-//        default:
-//            return UITableViewCell()
-//        }
+        
+        switch indexPath.row {
+        case 0:
+            let identifier = MainSettingTableViewCell.identifier
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MainSettingTableViewCell
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = Constant.SettingStrings.myList.rawValue
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = Constant.SettingStrings.question.rawValue
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = Constant.SettingStrings.oneByOne.rawValue
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = Constant.SettingStrings.alarm.rawValue
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.text = Constant.SettingStrings.quit.rawValue
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
