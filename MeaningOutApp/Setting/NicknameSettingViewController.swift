@@ -83,7 +83,7 @@ class NicknameSettingViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ sender: Any?) {
-        var text = nicknameTextfield.text
+        let text = nicknameTextfield.text
         if text!.count < 2 || text!.count > 9 {
             stateLabel.text = Constant.NicknameStrings.countFail.rawValue
             completeButton.isEnabled = false
