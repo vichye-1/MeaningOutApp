@@ -27,6 +27,17 @@ class ProfileImageSettingViewController: UIViewController {
         return button
     }()
     
+    let cameraButton: UIButton = {
+        let button = UIButton()
+        button.setImage(Constant.ButtonImages.cameraButton, for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.setBackgroundColor(Constant.Colors.mainOrange, for: .normal)
+        button.tintColor = Constant.Colors.white
+        button.layer.cornerRadius = 15
+        button.layer.masksToBounds = true
+        return button
+    }()
+    
     private let stackView0 = MakeStackView()
     private let stackView1 = MakeStackView()
     private let stackView2 = MakeStackView()
@@ -54,6 +65,7 @@ class ProfileImageSettingViewController: UIViewController {
     
     func configureHierarchy() {
         view.addSubview(profileButton)
+        view.addSubview(cameraButton)
         view.addSubview(stackView0)
         view.addSubview(stackView1)
         view.addSubview(stackView2)
@@ -84,6 +96,12 @@ class ProfileImageSettingViewController: UIViewController {
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.width.height.equalTo(110)
+        }
+        
+        cameraButton.snp.makeConstraints { make in
+            make.width.height.equalTo(30)
+            make.bottom.equalTo(profileButton.snp.bottom).inset(10)
+            make.trailing.equalTo(profileButton.snp.trailing)
         }
         
         stackView0.snp.makeConstraints { make in
