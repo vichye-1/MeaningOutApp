@@ -11,7 +11,6 @@ import SnapKit
 
 final class NoRecentMainViewController: UIViewController {
     
-    var count = 0
     var page = 1
     var currentQuery: String?
     var totalItems: Int = 0
@@ -125,6 +124,6 @@ extension NoRecentMainViewController: UISearchBarDelegate {
         guard let keyword = shoppingSearchBar.text, !keyword.isEmpty else { return }
         currentQuery = keyword
         callRequestShopping(query: keyword)
-        count += 1
+        
     }
 }

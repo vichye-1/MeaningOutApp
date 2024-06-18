@@ -48,7 +48,7 @@ class OnboardingViewController: UIViewController {
     
     private func configureLayout() {
         locoLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(52)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(100)
