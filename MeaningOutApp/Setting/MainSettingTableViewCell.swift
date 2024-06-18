@@ -15,7 +15,8 @@ class MainSettingTableViewCell: UITableViewCell {
         imageView.image = Constant.ImageViews.profile0
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = Constant.Colors.mainOrange.cgColor
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 50
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -38,7 +39,7 @@ class MainSettingTableViewCell: UITableViewCell {
         profileImage.snp.makeConstraints { make in
             make.centerY.equalTo(contentView.safeAreaLayoutGuide)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
-            make.width.height.equalTo(5)
+            make.width.height.equalTo(100)
         }
     }
 
