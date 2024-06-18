@@ -23,6 +23,10 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
        let button = UIButton()
         button.setImage(Constant.ButtonImages.likeButton, for: .selected)
         button.setImage(Constant.ButtonImages.unselectedLikeButton, for: .normal)
+        button.setBackgroundColor(Constant.Colors.lightGray, for: .normal)
+        button.setBackgroundColor(Constant.Colors.white, for: .selected)
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         return button
     }()

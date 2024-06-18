@@ -13,9 +13,7 @@ class OrangeButton: UIButton {
         setTitle(title, for: .normal)
         titleLabel?.font = Constant.FontSize.bold15
         setTitleColor(Constant.Colors.white, for: .normal)
-        
         setBackgroundColor(Constant.Colors.mainOrange, for: .normal)
-        
         layer.cornerRadius = 16
         clipsToBounds = true
     }
