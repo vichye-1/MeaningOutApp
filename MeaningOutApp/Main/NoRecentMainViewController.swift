@@ -44,7 +44,6 @@ final class NoRecentMainViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
-        
         shoppingSearchBar.delegate = self
     }
     

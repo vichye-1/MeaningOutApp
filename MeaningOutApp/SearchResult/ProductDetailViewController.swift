@@ -41,6 +41,8 @@ class ProductDetailViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .white
         navigationItem.title = productName
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = Constant.Colors.black
     }
     
     private func configureWebView() {
