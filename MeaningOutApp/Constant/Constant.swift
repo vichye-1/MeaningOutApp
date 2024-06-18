@@ -89,4 +89,12 @@ enum Constant {
         case complete = "완료"
         case noRecent = "최근 검색어가 없어요"
     }
+    
+    enum SettingStrings: String {
+        case myList = "나의 장바구니 목록"
+        case question = "자주 묻는 질문"
+        case oneByOne = "1:1 문의"
+        case alarm = "알림 설정"
+        case quit = "탈퇴하기"
+    }
 }

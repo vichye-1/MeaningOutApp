@@ -114,8 +114,11 @@ class NicknameSettingViewController: UIViewController {
         navigationItem.title = Constant.TabBarTitles.profileSetting.rawValue
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = Constant.Colors.black
-        
     }
     
-    
+//    func textFieldStandard() {
+//        let currenNickname = nicknameTextfield.text ?? ""
+//        
+//        
+//    }
 }

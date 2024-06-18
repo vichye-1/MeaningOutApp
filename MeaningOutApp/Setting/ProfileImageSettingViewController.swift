@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileImageSettingViewController: UIViewController {
     
+    var selectedImage: UIImage?
+    
     lazy var buttons0 = [profileButtonImage0, profileButtonImage1, profileButtonImage2, profileButtonImage3]
     lazy var buttons1 = [profileButtonImage4, profileButtonImage5, profileButtonImage6, profileButtonImage7]
     lazy var buttons2 = [profileButtonImage8, profileButtonImage9, profileButtonImage10, profileButtonImage11]
@@ -74,6 +76,7 @@ class ProfileImageSettingViewController: UIViewController {
             (buttons0 + buttons1 + buttons2).forEach { $0.isSelected = false }
             sender.isSelected = true
             profileButton.setImage(sender.image(for: .normal), for: .normal)
+            selectedImage = sender.image(for: .normal)
         }
     
     func configureLayout() {
