@@ -10,7 +10,7 @@ import Alamofire
 import SnapKit
 
 class SearchResultCollectionViewController: UIViewController {
-
+    
     var shoppingList: ShoppingResult?
     var searchQuery: String?
     var currentTotal: Int = 0
@@ -18,7 +18,7 @@ class SearchResultCollectionViewController: UIViewController {
     var callRequestShopping: String = ""
     
     private let searchCountLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textColor = Constant.Colors.mainOrange
         label.font = Constant.FontSize.bold13
         return label
@@ -69,6 +69,14 @@ class SearchResultCollectionViewController: UIViewController {
         configureLayout()
         configureCollectionView()
         configureUI()
+        expensiveButton.addTarget(self, action: #selector(expensiveButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func expensiveButtonClicked() {
+        guard var shoppingList = shoppingList else { return }
+        shoppingList.items.sort { Int($0.lprice)! > Int($1.lprice)! }
+        self.shoppingList = shoppingList
+        searchCollectionView.reloadData()
     }
     
     private func configureHierarchy() {
