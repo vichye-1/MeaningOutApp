@@ -48,10 +48,8 @@ final class NoRecentMainViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        configureTableView()
         shoppingSearchBar.delegate = self
-        recentSearchTableView.delegate = self
-        recentSearchTableView.dataSource = self
-        recentSearchTableView.register(ExistRecentTableViewCell.self, forCellReuseIdentifier: ExistRecentTableViewCell.identifier)
     }
     
     private func configureHierarchy() {
@@ -93,6 +91,12 @@ final class NoRecentMainViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = Constant.Colors.black
         self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    private func configureTableView() {
+        recentSearchTableView.delegate = self
+        recentSearchTableView.dataSource = self
+        recentSearchTableView.register(ExistRecentTableViewCell.self, forCellReuseIdentifier: ExistRecentTableViewCell.identifier)
     }
     
     func callRequestShopping(query: String) {
