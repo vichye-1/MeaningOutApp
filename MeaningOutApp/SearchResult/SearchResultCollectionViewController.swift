@@ -34,11 +34,8 @@ class SearchResultCollectionViewController: UIViewController {
     }()
     
     private let accuracyButton = SortButton(title: "  \( Constant.SearchResultStrings.sortAccuracy.rawValue)  ")
-    
     private let dateButton = SortButton(title: "  \(Constant.SearchResultStrings.sortDate.rawValue)  ")
-    
     private let expensiveButton = SortButton(title: "  \(Constant.SearchResultStrings.expensive.rawValue)  ")
-    
     private let cheapButton = SortButton(title: "  \(Constant.SearchResultStrings.cheap.rawValue)  ")
     
     private let spacingView: UIView = {

@@ -43,6 +43,12 @@ class ProductDetailViewController: UIViewController {
         navigationItem.title = productName
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = Constant.Colors.black
+        let likeButton = UIBarButtonItem(image: Constant.ButtonImages.likeButton, style: .plain, target: self, action: #selector(likeButtonClicked))
+        navigationItem.rightBarButtonItem = likeButton
+    }
+    
+    @objc func likeButtonClicked() {
+        
     }
     
     private func configureWebView() {
