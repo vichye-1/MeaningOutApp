@@ -15,7 +15,6 @@ final class NoRecentMainViewController: UIViewController {
     var currentQuery: String?
     var totalItems: Int = 0
     let userNickname = UserDefaults.standard.string(forKey: "nickname")
-    
     var shoppingList = ShoppingResult(total: 0, start: 0, display: 0, items: [])
     
     private let shoppingSearchBar: UISearchBar = {
@@ -39,18 +38,27 @@ final class NoRecentMainViewController: UIViewController {
         return label
     }()
     
+    private let recentSearchTableView: UITableView = {
+        let tableView = UITableView()
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHierarchy()
         configureLayout()
         configureUI()
         shoppingSearchBar.delegate = self
+        recentSearchTableView.delegate = self
+        recentSearchTableView.dataSource = self
+        recentSearchTableView.register(ExistRecentTableViewCell.self, forCellReuseIdentifier: ExistRecentTableViewCell.identifier)
     }
     
     private func configureHierarchy() {
         view.addSubview(shoppingSearchBar)
         view.addSubview(noRecentImageView)
         view.addSubview(emptyLabel)
+        view.addSubview(recentSearchTableView)
     }
     
     private func configureLayout() {
@@ -70,6 +78,12 @@ final class NoRecentMainViewController: UIViewController {
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(34)
         }
+        
+        recentSearchTableView.snp.makeConstraints { make in
+            make.top.equalTo(shoppingSearchBar.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
     }
     
     private func configureUI() {
@@ -124,5 +138,17 @@ extension NoRecentMainViewController: UISearchBarDelegate {
         currentQuery = keyword
         callRequestShopping(query: keyword)
         
+    }
+}
+
+extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = ExistRecentTableViewCell.identifier
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ExistRecentTableViewCell
+        return cell
     }
 }

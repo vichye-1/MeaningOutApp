@@ -121,6 +121,7 @@ class SearchResultCollectionViewController: UIViewController {
         searchCollectionView.delegate = self
         searchCollectionView.dataSource = self
         searchCollectionView.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCollectionViewCell.identifier)
+        //searchCollectionView.prefetchDataSource = self
     }
     
     private func configureUI() {
@@ -169,7 +170,7 @@ extension SearchResultCollectionViewController: UICollectionViewDelegate, UIColl
 //            if shoppingList.items.count - 2 == item.row {
 //                page += 1
 //                if let query = searchQuery {
-//                    callRequestShopping(query: searchQuery)
+//                    callRequestShopping(query: query)
 //                }
 //            }
 //        }
