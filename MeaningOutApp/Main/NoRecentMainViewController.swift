@@ -16,6 +16,7 @@ final class NoRecentMainViewController: UIViewController {
     var totalItems: Int = 0
     let userNickname = UserDefaults.standard.string(forKey: "nickname")
     var shoppingList = ShoppingResult(total: 0, start: 0, display: 0, items: [])
+    var recentSearchList: [String] = []
     
     private let shoppingSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -87,7 +88,6 @@ final class NoRecentMainViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .white
         self.navigationItem.title = "\(userNickname!)님의 MEANING OUT"
-        
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = Constant.Colors.black
         self.navigationItem.backBarButtonItem = backBarButtonItem
@@ -141,7 +141,7 @@ extension NoRecentMainViewController: UISearchBarDelegate {
         guard let keyword = shoppingSearchBar.text, !keyword.isEmpty else { return }
         currentQuery = keyword
         callRequestShopping(query: keyword)
-        
+        recentSearchList.append(keyword)
     }
 }
 
