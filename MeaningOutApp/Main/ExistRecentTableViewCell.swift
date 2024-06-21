@@ -18,6 +18,22 @@ class ExistRecentTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    private let keywordLabel: UILabel = {
+        let label = UILabel()
+        label.tintColor = Constant.Colors.black
+        label.textAlignment = .left
+        label.backgroundColor = .brown
+        return label
+    }()
+    
+    private let removeButton: UIButton = {
+       let button = UIButton()
+        button.setImage(Constant.ButtonImages.closeButton, for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.tintColor = Constant.Colors.black
+        return button
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setHierarchy()
@@ -26,11 +42,24 @@ class ExistRecentTableViewCell: UITableViewCell {
     
     private func setHierarchy() {
         contentView.addSubview(timerImageView)
+        contentView.addSubview(keywordLabel)
+        contentView.addSubview(removeButton)
     }
     
     private func setLayout() {
         timerImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(20)
+        }
+        keywordLabel.snp.makeConstraints { make in
+            make.leading.equalTo(timerImageView.snp.trailing).offset(16)
+            make.height.equalTo(20)
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(removeButton.snp.leading).inset(-16)
+        }
+        removeButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(20)
         }
