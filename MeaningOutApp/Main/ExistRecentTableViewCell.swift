@@ -17,7 +17,7 @@ class ExistRecentTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     private let keywordLabel: UILabel = {
         let label = UILabel()
         label.tintColor = Constant.Colors.black

@@ -187,11 +187,16 @@ extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recentSearchList.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = ExistRecentTableViewCell.identifier
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ExistRecentTableViewCell
         cell.setSearchLabel(keyword: recentSearchList[indexPath.row])
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedQuery = recentSearchList[indexPath.row]
+        currentQuery = selectedQuery
+        shoppingSearchBar.text = currentQuery
+        callRequestShopping(query: selectedQuery)
     }
 }
