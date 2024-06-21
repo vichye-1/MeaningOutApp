@@ -191,6 +191,7 @@ extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = ExistRecentTableViewCell.identifier
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ExistRecentTableViewCell
+        cell.setSearchLabel(keyword: recentSearchList[indexPath.row])
         return cell
     }
 }

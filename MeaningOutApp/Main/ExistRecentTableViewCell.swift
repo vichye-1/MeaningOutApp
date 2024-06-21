@@ -22,7 +22,6 @@ class ExistRecentTableViewCell: UITableViewCell {
         let label = UILabel()
         label.tintColor = Constant.Colors.black
         label.textAlignment = .left
-        label.backgroundColor = .brown
         return label
     }()
     
@@ -65,8 +64,9 @@ class ExistRecentTableViewCell: UITableViewCell {
         }
     }
     
-    func setUI() {
-        
+    func setSearchLabel(keyword: String) {
+        keywordLabel.text = keyword
+        keywordLabel.font = Constant.FontSize.regular15
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
