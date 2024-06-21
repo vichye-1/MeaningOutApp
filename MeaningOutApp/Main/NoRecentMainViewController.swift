@@ -179,6 +179,7 @@ extension NoRecentMainViewController: UISearchBarDelegate {
         currentQuery = keyword
         callRequestShopping(query: keyword)
         recentSearchList.append(keyword)
+        recentSearchTableView.reloadData()
     }
 }
 
