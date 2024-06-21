@@ -163,6 +163,12 @@ final class NoRecentMainViewController: UIViewController {
         }
     }
     
+    private func removeSearch(index: Int) {
+        recentSearchList.remove(at: index)
+        UserDefaults.standard.set(recentSearchList, forKey: "recentSearches")
+        recentSearchTableView.reloadData()
+    }
+    
     func showSearchResults() {
         let searchResultVC = SearchResultCollectionViewController()
         searchResultVC.shoppingList = self.shoppingList
@@ -198,5 +204,10 @@ extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource
         currentQuery = selectedQuery
         shoppingSearchBar.text = currentQuery
         callRequestShopping(query: selectedQuery)
+    }
+    func removeButtonTapped(cell: ExistRecentTableViewCell) {
+        if let indexPath = recentSearchTableView.indexPath(for: cell) {
+            removeSearch(index: indexPath.row)
+        }
     }
 }

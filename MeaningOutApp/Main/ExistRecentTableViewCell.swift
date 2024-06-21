@@ -30,6 +30,7 @@ class ExistRecentTableViewCell: UITableViewCell {
         button.setImage(Constant.ButtonImages.closeButton, for: .normal)
         button.contentMode = .scaleAspectFit
         button.tintColor = Constant.Colors.black
+        //button.addTarget(self, action: removeButtonTapped, for: .touchUpInside)
         return button
     }()
     

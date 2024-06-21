@@ -42,8 +42,8 @@ class ProductDetailViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.title = productName
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.tintColor = Constant.Colors.black
-        let likeButton = UIBarButtonItem(image: Constant.ButtonImages.unselectedLikeButton, style: .plain, target: self, action: #selector(likeButtonClicked))
+        let image = Constant.ButtonImages.unselectedLikeButton?.withRenderingMode(.alwaysOriginal)
+        let likeButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(likeButtonClicked))
         navigationItem.rightBarButtonItem = likeButton
     }
     
