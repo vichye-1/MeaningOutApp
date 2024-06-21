@@ -13,7 +13,9 @@ class ProductDetailViewController: UIViewController {
     
     var productName: String = ""
     var productLink: String = ""
+    var productId: String = ""
     var isLiked: Bool = false
+    private var likedItems: [String] = []
     
     private let webView: WKWebView = {
         let webView = WKWebView()
@@ -22,6 +24,8 @@ class ProductDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadLikedItems()
+        isLiked = likedItems.contains(productId)
         configureHierarchy()
         configureLayout()
         configureUI()
@@ -42,7 +46,7 @@ class ProductDetailViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.title = productName
         self.navigationController?.navigationBar.topItem?.title = ""
-        let image = Constant.ButtonImages.unselectedLikeButton?.withRenderingMode(.alwaysOriginal)
+        let image = isLiked ? Constant.ButtonImages.likeButton?.withRenderingMode(.alwaysOriginal) : Constant.ButtonImages.unselectedLikeButton?.withRenderingMode(.alwaysOriginal)
         let likeButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(likeButtonClicked))
         navigationItem.rightBarButtonItem = likeButton
     }
@@ -52,6 +56,16 @@ class ProductDetailViewController: UIViewController {
         let imageName = isLiked ? Constant.ButtonImages.likeButton : Constant.ButtonImages.unselectedLikeButton
         let image = imageName?.withRenderingMode(.alwaysOriginal)
         navigationItem.rightBarButtonItem?.image = image
+        if isLiked {
+            if !likedItems.contains(productId) {
+                likedItems.append(productId)
+            }
+        } else {
+            if let index = likedItems.firstIndex(of: productId) {
+                likedItems.remove(at: index)
+            }
+        }
+        UserDefaults.standard.setValue(likedItems, forKey: "likedItems")
     }
     
     private func configureWebView() {
@@ -59,5 +73,9 @@ class ProductDetailViewController: UIViewController {
             let request = URLRequest(url: url)
             webView.load(request)
         }
+    }
+    
+    private func loadLikedItems() {
+        likedItems = UserDefaults.standard.array(forKey: "likedItems") as? [String] ?? []
     }
 }

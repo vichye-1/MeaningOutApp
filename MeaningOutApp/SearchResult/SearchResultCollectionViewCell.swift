@@ -31,8 +31,20 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    private var item: Items?
+    
     @objc private func likeButtonTapped() {
         likeButton.isSelected.toggle()
+        guard let item = item else { return }
+        var likedItems = UserDefaults.standard.array(forKey: "likedItems") as? [String] ?? []
+        if likeButton.isSelected {
+            likedItems.append(item.productId)
+        } else {
+            if let index = likedItems.firstIndex(of: item.productId) {
+                likedItems.remove(at: index)
+            }
+        }
+        UserDefaults.standard.set(likedItems, forKey: "likedItems")
     }
     
     let companyLabel: UILabel = {
@@ -102,6 +114,7 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
     }
     
     func configureValue(item: Items) {
+        self.item = item
         if let url = URL(string: item.image) {
             shoppingImageView.kf.setImage(with: url)
         }
@@ -112,6 +125,8 @@ class SearchResultCollectionViewCell: UICollectionViewCell {
         } else {
             priceLabel.text = "가격 정보 없음"
         }
+        let likedItems = UserDefaults.standard.array(forKey: "likedItems") as? [String] ?? []
+        likeButton.isSelected = likedItems.contains(item.productId)
     }
     
     required init?(coder: NSCoder) {
