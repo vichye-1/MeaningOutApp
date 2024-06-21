@@ -34,8 +34,16 @@ final class NoRecentMainViewController: UIViewController {
     private let emptyLabel: UILabel = {
         let label = UILabel()
         label.text = Constant.OtherStrings.noRecent.rawValue
-        label.font = .boldSystemFont(ofSize: 15)
+        label.font = Constant.FontSize.bold15
         label.textColor = Constant.Colors.black
+        return label
+    }()
+    
+    private let recentSearchLabel: UILabel = {
+       let label = UILabel()
+        label.text = "최근 검색"
+        label.font = Constant.FontSize.bold13
+        label.textAlignment = .left
         return label
     }()
     
@@ -57,6 +65,7 @@ final class NoRecentMainViewController: UIViewController {
         view.addSubview(shoppingSearchBar)
         view.addSubview(noRecentImageView)
         view.addSubview(emptyLabel)
+        view.addSubview(recentSearchLabel)
         view.addSubview(recentSearchTableView)
     }
     
@@ -78,8 +87,14 @@ final class NoRecentMainViewController: UIViewController {
             make.height.equalTo(34)
         }
         
+        recentSearchLabel.snp.makeConstraints { make in
+            make.top.equalTo(shoppingSearchBar.snp.bottom).offset(16)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.height.equalTo(20)
+        }
+        
         recentSearchTableView.snp.makeConstraints { make in
-            make.top.equalTo(shoppingSearchBar.snp.bottom)
+            make.top.equalTo(recentSearchLabel.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
