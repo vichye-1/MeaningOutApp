@@ -42,9 +42,17 @@ final class NoRecentMainViewController: UIViewController {
     private let recentSearchLabel: UILabel = {
        let label = UILabel()
         label.text = "최근 검색"
-        label.font = Constant.FontSize.bold13
+        label.font = Constant.FontSize.bold15
         label.textAlignment = .left
         return label
+    }()
+    
+    private let removeAllButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("전체 삭제", for: .normal)
+        button.setTitleColor(Constant.Colors.mainOrange, for: .normal)
+        button.titleLabel?.font = Constant.FontSize.regular15
+        return button
     }()
     
     private let recentSearchTableView: UITableView = {
@@ -66,6 +74,7 @@ final class NoRecentMainViewController: UIViewController {
         view.addSubview(noRecentImageView)
         view.addSubview(emptyLabel)
         view.addSubview(recentSearchLabel)
+        view.addSubview(removeAllButton)
         view.addSubview(recentSearchTableView)
     }
     
@@ -90,6 +99,12 @@ final class NoRecentMainViewController: UIViewController {
         recentSearchLabel.snp.makeConstraints { make in
             make.top.equalTo(shoppingSearchBar.snp.bottom).offset(16)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.height.equalTo(20)
+        }
+        
+        removeAllButton.snp.makeConstraints { make in
+            make.top.equalTo(shoppingSearchBar.snp.bottom).offset(16)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(20)
         }
         
