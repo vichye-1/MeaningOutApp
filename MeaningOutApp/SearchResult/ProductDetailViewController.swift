@@ -48,7 +48,10 @@ class ProductDetailViewController: UIViewController {
     }
     
     @objc func likeButtonClicked() {
-        
+        isLiked.toggle()
+        let imageName = isLiked ? Constant.ButtonImages.likeButton : Constant.ButtonImages.unselectedLikeButton
+        let image = imageName?.withRenderingMode(.alwaysOriginal)
+        navigationItem.rightBarButtonItem?.image = image
     }
     
     private func configureWebView() {
