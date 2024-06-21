@@ -16,7 +16,7 @@ final class NoRecentMainViewController: UIViewController {
     var totalItems: Int = 0
     let userNickname = UserDefaults.standard.string(forKey: "nickname")
     var shoppingList = ShoppingResult(total: 0, start: 0, display: 0, items: [])
-    var recentSearchList: [String] = []
+    var recentSearchList: [String] = UserDefaults.standard.stringArray(forKey: "recentSearches") ?? []
     
     private let shoppingSearchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -112,7 +112,6 @@ final class NoRecentMainViewController: UIViewController {
             make.top.equalTo(recentSearchLabel.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
     }
     
     private func configureUI() {
@@ -150,9 +149,17 @@ final class NoRecentMainViewController: UIViewController {
                     self.shoppingList.items.append(contentsOf: value.items)
                 }
                 self.showSearchResults()
+                self.saveRecentSearch(query: query)
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    private func saveRecentSearch(query: String) {
+        if !recentSearchList.contains(query) {
+            recentSearchList.append(query)
+            UserDefaults.standard.set(recentSearchList, forKey: "recentSearches")
         }
     }
     
@@ -177,7 +184,7 @@ extension NoRecentMainViewController: UISearchBarDelegate {
 
 extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return recentSearchList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
