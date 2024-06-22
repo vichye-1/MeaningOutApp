@@ -96,29 +96,14 @@ class NicknameSettingViewController: UIViewController {
     
     @objc func textFieldDidChange(_ sender: Any?) {
         let text = nicknameTextfield.text
+        let disabledCharacterSet = CharacterSet(charactersIn: "@#$%")
         if text!.count < 2 || text!.count > 9 {
             stateLabel.text = Constant.NicknameStrings.countFail.rawValue
             completeButton.isEnabled = false
-        } else if text!.contains("@") {
+        } else if text?.rangeOfCharacter(from: disabledCharacterSet) != nil {
             stateLabel.text = Constant.NicknameStrings.strFail.rawValue
             completeButton.isEnabled = false
-        } else if text!.contains("#") {
-            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
-            completeButton.isEnabled = false
-        } else if text!.contains("$") {
-            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
-            completeButton.isEnabled = false
-        } else if text!.contains("%") {
-            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
-            completeButton.isEnabled = false
-        } else if Int(text!) != nil {
-            stateLabel.text = Constant.NicknameStrings.numFail.rawValue
-            completeButton.isEnabled = false
-        } else if text!.allSatisfy({ $0.isLetter }) {
-            stateLabel.text = Constant.NicknameStrings.rightNickname.rawValue
-            isValidateNickname = true
-            completeButton.isEnabled = true
-        } else if !text!.allSatisfy({ $0.isNumber }) {
+        } else if text!.contains(where: { $0.isNumber }) {
             stateLabel.text = Constant.NicknameStrings.numFail.rawValue
             completeButton.isEnabled = false
         } else {
