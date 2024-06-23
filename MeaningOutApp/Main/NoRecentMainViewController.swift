@@ -67,6 +67,14 @@ final class NoRecentMainViewController: UIViewController {
         configureUI()
         configureTableView()
         shoppingSearchBar.delegate = self
+        removeAllButton.addTarget(self, action: #selector(removeAllButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    private func removeAllButtonTapped() {
+        recentSearchList.removeAll()
+        UserDefaults.standard.removeObject(forKey: "recentSearches")
+        recentSearchTableView.reloadData()
     }
     
     private func configureHierarchy() {
