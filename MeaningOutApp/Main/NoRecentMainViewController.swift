@@ -166,7 +166,7 @@ final class NoRecentMainViewController: UIViewController {
     private func removeSearch(index: Int) {
         recentSearchList.remove(at: index)
         UserDefaults.standard.set(recentSearchList, forKey: "recentSearches")
-        recentSearchTableView.reloadData()
+        recentSearchTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
     }
     
     func showSearchResults() {
@@ -197,6 +197,7 @@ extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource
         let identifier = ExistRecentTableViewCell.identifier
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ExistRecentTableViewCell
         cell.setSearchLabel(keyword: recentSearchList[indexPath.row])
+        cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -205,6 +206,9 @@ extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource
         shoppingSearchBar.text = currentQuery
         callRequestShopping(query: selectedQuery)
     }
+}
+
+extension NoRecentMainViewController: existRecentTableViewCellDelegate {
     func removeButtonTapped(cell: ExistRecentTableViewCell) {
         if let indexPath = recentSearchTableView.indexPath(for: cell) {
             removeSearch(index: indexPath.row)

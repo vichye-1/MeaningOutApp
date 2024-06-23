@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol existRecentTableViewCellDelegate: AnyObject {
+    func removeButtonTapped(cell: ExistRecentTableViewCell)
+}
+
 class ExistRecentTableViewCell: UITableViewCell {
+    
+    weak var delegate: existRecentTableViewCellDelegate?
     
     private let timerImageView: UIImageView = {
         let imageView = UIImageView()
@@ -38,6 +44,7 @@ class ExistRecentTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setHierarchy()
         setLayout()
+        removeButton.addTarget(self, action: #selector(removeButtonTapped), for: .touchUpInside)
     }
     
     private func setHierarchy() {
@@ -68,6 +75,11 @@ class ExistRecentTableViewCell: UITableViewCell {
     func setSearchLabel(keyword: String) {
         keywordLabel.text = keyword
         keywordLabel.font = Constant.FontSize.regular15
+    }
+    
+    @objc
+    private func removeButtonTapped() {
+        delegate?.removeButtonTapped(cell: self)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
