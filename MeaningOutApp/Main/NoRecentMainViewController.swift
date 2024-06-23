@@ -68,6 +68,7 @@ final class NoRecentMainViewController: UIViewController {
         configureTableView()
         shoppingSearchBar.delegate = self
         removeAllButton.addTarget(self, action: #selector(removeAllButtonTapped), for: .touchUpInside)
+        updateUI()
     }
     
     @objc
@@ -170,12 +171,14 @@ final class NoRecentMainViewController: UIViewController {
         }
         recentSearchList.insert(query, at: 0)
         UserDefaults.standard.set(recentSearchList, forKey: "recentSearches")
+        updateUI()
         recentSearchTableView.reloadData()
     }
     
     private func removeSearch(index: Int) {
         recentSearchList.remove(at: index)
         UserDefaults.standard.set(recentSearchList, forKey: "recentSearches")
+        updateUI()
         recentSearchTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
     }
     
@@ -185,6 +188,15 @@ final class NoRecentMainViewController: UIViewController {
         searchResultVC.searchQuery = currentQuery
         searchResultVC.currentTotal = totalItems
         self.navigationController?.pushViewController(searchResultVC, animated: true)
+    }
+    
+    private func updateUI() {
+        let hasRecentSearch = !recentSearchList.isEmpty
+        recentSearchLabel.isHidden = !hasRecentSearch
+        removeAllButton.isHidden = !hasRecentSearch
+        recentSearchTableView.isHidden = !hasRecentSearch
+        noRecentImageView.isHidden = hasRecentSearch
+        emptyLabel.isHidden = hasRecentSearch
     }
 }
 
