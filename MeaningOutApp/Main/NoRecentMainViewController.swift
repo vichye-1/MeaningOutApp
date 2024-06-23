@@ -75,6 +75,7 @@ final class NoRecentMainViewController: UIViewController {
     private func removeAllButtonTapped() {
         recentSearchList.removeAll()
         UserDefaults.standard.removeObject(forKey: "recentSearches")
+        updateUI()
         recentSearchTableView.reloadData()
     }
     
