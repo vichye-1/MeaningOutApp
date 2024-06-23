@@ -165,10 +165,12 @@ final class NoRecentMainViewController: UIViewController {
     }
     
     private func saveRecentSearch(query: String) {
-        if !recentSearchList.contains(query) {
-            recentSearchList.append(query)
-            UserDefaults.standard.set(recentSearchList, forKey: "recentSearches")
+        if let index = recentSearchList.firstIndex(of: query) {
+            recentSearchList.remove(at: index)
         }
+        recentSearchList.insert(query, at: 0)
+        UserDefaults.standard.set(recentSearchList, forKey: "recentSearches")
+        recentSearchTableView.reloadData()
     }
     
     private func removeSearch(index: Int) {
@@ -192,8 +194,7 @@ extension NoRecentMainViewController: UISearchBarDelegate {
         guard let keyword = shoppingSearchBar.text, !keyword.isEmpty else { return }
         currentQuery = keyword
         callRequestShopping(query: keyword)
-        recentSearchList.append(keyword)
-        recentSearchTableView.reloadData()
+        saveRecentSearch(query: keyword)
     }
 }
 
@@ -213,6 +214,7 @@ extension NoRecentMainViewController: UITableViewDelegate, UITableViewDataSource
         currentQuery = selectedQuery
         shoppingSearchBar.text = currentQuery
         callRequestShopping(query: selectedQuery)
+        saveRecentSearch(query: selectedQuery)
     }
 }
 
