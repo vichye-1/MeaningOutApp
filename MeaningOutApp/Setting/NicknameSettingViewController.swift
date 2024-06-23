@@ -9,11 +9,10 @@ import UIKit
 import SnapKit
 
 class NicknameSettingViewController: UIViewController {
-    
+    var selectedProfileImage: String?
     var currentProfile = 0
     var currentNickname = ""
     var currentDate = ""
-    
     var isValidateNickname = false
     
     let profileButton: UIButton = {
@@ -75,6 +74,27 @@ class NicknameSettingViewController: UIViewController {
         completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
         nicknameTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        loadProfileImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateProfileImage()
+    }
+    
+    func loadProfileImage() {
+        if let imageName = UserDefaults.standard.string(forKey: "profileImage") {
+            selectedProfileImage = imageName
+            profileButton.setImage(UIImage(named: imageName), for: .normal)
+        } else {
+            setInitialRandomImage()
+        }
+    }
+    
+    func updateProfileImage() {
+        if let imageName = selectedProfileImage {
+            profileButton.setImage(UIImage(named: imageName), for: .normal)
+        }
     }
     
     @objc func completeButtonClicked() {
@@ -91,7 +111,10 @@ class NicknameSettingViewController: UIViewController {
     }
     
     @objc func profileButtonClicked() {
-        navigationController?.pushViewController(ProfileImageSettingViewController(), animated: true)
+        let profileImageVC = ProfileImageSettingViewController()
+        profileImageVC.initialProfileImage = selectedProfileImage ?? UserDefaults.standard.string(forKey: "profileImage")
+        profileImageVC.delegate = self
+        navigationController?.pushViewController(profileImageVC, animated: true)
     }
     
     @objc func textFieldDidChange(_ sender: Any?) {
@@ -128,13 +151,11 @@ class NicknameSettingViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.width.height.equalTo(110)
         }
-        
         cameraButton.snp.makeConstraints { make in
             make.width.height.equalTo(30)
             make.bottom.equalTo(profileButton.snp.bottom).inset(10)
             make.trailing.equalTo(profileButton.snp.trailing)
         }
-        
         nicknameTextfield.snp.makeConstraints { make in
             make.top.equalTo(profileButton.snp.bottom).offset(24)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
@@ -175,5 +196,18 @@ class NicknameSettingViewController: UIViewController {
         let currentDateString = formatter.string(from: Date())
         currentDate = currentDateString
     }
+    
+    func setInitialRandomImage() {
+        let randomImage = "profile_\(Int.random(in: 0...11))"
+        profileButton.setImage(UIImage(named: randomImage), for: .normal)
+        selectedProfileImage = randomImage
+        UserDefaults.standard.set(randomImage, forKey: "profileImage")
+    }
 }
 
+extension NicknameSettingViewController: ProfileImageDelegate {
+    func selectProfileImage(imageName: String) {
+        selectedProfileImage = imageName
+        updateProfileImage()
+    }
+}

@@ -7,23 +7,27 @@
 
 import UIKit
 
+protocol ProfileImageDelegate: AnyObject {
+    func selectProfileImage(imageName: String)
+}
+
 class ProfileImageSettingViewController: UIViewController {
-    
-    var selectedImage: UIImage?
-    
+    weak var delegate: ProfileImageDelegate?
+    var initialProfileImage: String?
     lazy var buttons0 = [profileButtonImage0, profileButtonImage1, profileButtonImage2, profileButtonImage3]
     lazy var buttons1 = [profileButtonImage4, profileButtonImage5, profileButtonImage6, profileButtonImage7]
     lazy var buttons2 = [profileButtonImage8, profileButtonImage9, profileButtonImage10, profileButtonImage11]
-
+    
     let profileButton: UIButton = {
         let button = UIButton()
-        var randomIdx = Int.random(in: 0...11)
-        button.setImage(UIImage(named: "profile_\(randomIdx)"), for: .normal)
+        let randomImage = "profile_\(Int.random(in: 0...11))"
+        button.setImage(UIImage(named: randomImage), for: .normal)
         button.contentMode = .scaleAspectFill
         button.layer.borderWidth = 3
         button.layer.borderColor = Constant.Colors.mainOrange.cgColor
         button.layer.cornerRadius = 55
         button.layer.masksToBounds = true
+        UserDefaults.standard.set(randomImage, forKey: "profileImage")
         return button
     }()
     
@@ -61,6 +65,15 @@ class ProfileImageSettingViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureUI()
+        setInitialProfileImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParent {
+            let selectedImageName = UserDefaults.standard.string(forKey: "profileImage") ?? initialProfileImage ?? ""
+            delegate?.selectProfileImage(imageName: selectedImageName)
+        }
     }
     
     func configureHierarchy() {
@@ -85,11 +98,13 @@ class ProfileImageSettingViewController: UIViewController {
     }
     
     @objc func handleProfileButtonTap(_ sender: ProfileImageButton) {
-            (buttons0 + buttons1 + buttons2).forEach { $0.isSelected = false }
-            sender.isSelected = true
-            profileButton.setImage(sender.image(for: .normal), for: .normal)
-            selectedImage = sender.image(for: .normal)
-        }
+        (buttons0 + buttons1 + buttons2).forEach { $0.isSelected = false }
+        sender.isSelected = true
+        let imageName = sender.image(for: .normal)?.accessibilityIdentifier ?? ""
+        profileButton.setImage(sender.image(for: .normal), for: .normal)
+        UserDefaults.standard.set(imageName, forKey: "profileImage")
+        delegate?.selectProfileImage(imageName: imageName)
+    }
     
     func configureLayout() {
         profileButton.snp.makeConstraints { make in
@@ -146,5 +161,15 @@ class ProfileImageSettingViewController: UIViewController {
         navigationItem.title = Constant.TabBarTitles.profileSetting.rawValue
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = Constant.Colors.black
+    }
+    
+    func setInitialProfileImage() {
+        guard let initialImageName = initialProfileImage else { return }
+        profileButton.setImage(UIImage(named: initialImageName), for: .normal)
+        let allButtons = buttons0 + buttons1 + buttons2
+        if let selectedButton = allButtons.first(where: { $0.image(for: .normal)?.accessibilityIdentifier == initialImageName }) {
+            selectedButton.isSelected = true
+        }
+        UserDefaults.standard.set(initialImageName, forKey: "profileImage")
     }
 }
