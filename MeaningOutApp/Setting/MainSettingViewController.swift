@@ -96,23 +96,14 @@ extension MainSettingViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.row == 0 {
             navigationController?.pushViewController(NicknameSettingViewController(), animated: true)
         } else if indexPath.row == 5 {
-            quitAlert()
+            quitAlert(title: "탈퇴하기", message: "탈퇴를 하면 데이터가 모두 초기화됩니다. 탈퇴하시겠습니까?", yes: "확인", no: "취소") {
+                UserDefaults.standard.set(false, forKey: "isUser")
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                let rootViewController = UINavigationController(rootViewController: OnboardingViewController())
+                sceneDelegate?.window?.rootViewController = rootViewController
+                sceneDelegate?.window?.makeKeyAndVisible()
+            }
         }
-    }
-    
-    func quitAlert() {
-        let alert = UIAlertController(title: "탈퇴하기", message: "탈퇴를 하면 데이터가 모두 초기화됩니다. 탈퇴 하시겠습니까?", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "확인", style: .default) { _ in
-            UserDefaults.standard.set(false, forKey: "isUser")
-            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            let sceneDelegate = windowScene?.delegate as? SceneDelegate
-            let rootViewController = UINavigationController(rootViewController: OnboardingViewController())
-            sceneDelegate?.window?.rootViewController = rootViewController
-            sceneDelegate?.window?.makeKeyAndVisible()
-        }
-        let no = UIAlertAction(title: "취소", style: .destructive)
-        alert.addAction(yes)
-        alert.addAction(no)
-        present(alert, animated: true)
     }
 }
