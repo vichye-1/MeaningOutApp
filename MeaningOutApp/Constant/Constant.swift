@@ -8,6 +8,16 @@
 import UIKit
 
 enum Constant {
+    enum userDefaultsKey {
+        case isSignUp
+        case nickname
+        case photo
+        
+        var string: String {
+            return String(describing: self)
+        }
+    }
+    
     enum Colors {
         static let mainOrange = UIColor(hexCode: "ef8947")
         static let black = UIColor(hexCode: "000000")

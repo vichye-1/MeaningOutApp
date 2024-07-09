@@ -15,6 +15,8 @@ class NicknameSettingViewController: UIViewController {
     var currentDate = ""
     var isValidateNickname = false
     
+    let viewModel = NicknameViewModel()
+    
     let profileButton: UIButton = {
         let button = UIButton()
         var randomImage = "profile_\(Int.random(in: 0...11))"
