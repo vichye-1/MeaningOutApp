@@ -66,7 +66,7 @@ class NicknameSettingViewController: UIViewController {
         return label
     }()
     
-    private let completeButton = OrangeButton(title: Constant.OtherStrings.complete.rawValue)
+    let completeButton = OrangeButton(title: Constant.OtherStrings.complete.rawValue)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +77,16 @@ class NicknameSettingViewController: UIViewController {
         profileButton.addTarget(self, action: #selector(profileButtonClicked), for: .touchUpInside)
         nicknameTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         loadProfileImage()
+        bindData()
+    }
+    
+    func bindData() {
+        viewModel.outputValidationText.bind { value in
+            self.stateLabel.text = value
+        }
+        viewModel.outputValid.bind { value in
+            self.completeButton.isEnabled = value
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,23 +129,8 @@ class NicknameSettingViewController: UIViewController {
         navigationController?.pushViewController(profileImageVC, animated: true)
     }
     
-    @objc func textFieldDidChange(_ sender: Any?) {
-        let text = nicknameTextfield.text
-        let disabledCharacterSet = CharacterSet(charactersIn: "@#$%")
-        if text!.count < 2 || text!.count > 9 {
-            stateLabel.text = Constant.NicknameStrings.countFail.rawValue
-            completeButton.isEnabled = false
-        } else if text?.rangeOfCharacter(from: disabledCharacterSet) != nil {
-            stateLabel.text = Constant.NicknameStrings.strFail.rawValue
-            completeButton.isEnabled = false
-        } else if text!.contains(where: { $0.isNumber }) {
-            stateLabel.text = Constant.NicknameStrings.numFail.rawValue
-            completeButton.isEnabled = false
-        } else {
-            stateLabel.text = Constant.NicknameStrings.rightNickname.rawValue
-            isValidateNickname = true
-            completeButton.isEnabled = true
-        }
+    @objc func textFieldDidChange() {
+        viewModel.inputNickname.value = nicknameTextfield.text
     }
     
     func configureHierarchy() {
